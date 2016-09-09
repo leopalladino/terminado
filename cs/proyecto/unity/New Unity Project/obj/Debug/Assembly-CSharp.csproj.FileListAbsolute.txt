@@ -103,3 +103,24 @@ C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\c
 C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\cs\proyecto\unity\New Unity Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\cs\proyecto\unity\New Unity Project\obj\Debug\Assembly-CSharp.dll
 C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\cs\proyecto\unity\New Unity Project\obj\Debug\Assembly-CSharp.pdb
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\Assembly-CSharp.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEditor.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEngine.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEngine.Networking.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEngine.UI.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\Mono.Cecil.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\Unity.SerializationLogic.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\Unity.DataContract.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\Unity.UNetWeaver.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\Unity.CecilTools.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEngine.xml
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEditor.xml
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEngine.UI.xml
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEngine.Networking.xml
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\obj\Debug\Assembly-CSharp.dll
+D:\Users\41823413\Desktop\proyectofinal\project-lolazo\cs\proyecto\unity\New Unity Project\obj\Debug\Assembly-CSharp.pdb

@@ -15,6 +15,8 @@ public class PlayerStats : MonoBehaviour {
 	public int[] luckLevels;
 	public float[] speedLevels;
 
+	public bool hadwarp = false;
+
 	public int HPNoNull;
 	public int ATQNoNull;
 	public int STAMINANoNull;
@@ -145,6 +147,9 @@ public class PlayerStats : MonoBehaviour {
 		if (Application.loadedLevelName != "escena2") {
 			if (currentExp >= toLevelUp[falselevel]) 
 			{
+				if (statsButton.GetComponent<Image>().color == Color.white) {
+					statsButton.GetComponent<Image>().color = Color.red;
+				}
 				falselevel++;
 				Points++;
 				FalsePoints = Points;
@@ -155,9 +160,7 @@ public class PlayerStats : MonoBehaviour {
 			}
 
 			if (SPM.win && !isActive && HadConfirm && PSAuxliarBool && !SPM.wantcontinue && hastoexit) {
-				if (statsButton.GetComponent<Image>().color == Color.white) {
-					statsButton.GetComponent<Image>().color = Color.red;
-				}
+				
 				LevelUp ();
 				currentLevel = falselevel;
 				PSAuxliarBool = false;
@@ -258,7 +261,7 @@ public class PlayerStats : MonoBehaviour {
 			ConfirmS.SetActive(false);
 			LV.SetActive (false);
 			SG.ConfirmSavePS = true;
-					statsForSG = HPLegit + ";" + ATQLegir + ";" + STAMINALegit + ";" + RESLegit + ";" + LUCKLegit + ";" + falselevel + ";" + currentExp + ";" + GM.gold + ";" + Points;
+			statsForSG = HPLegit + ";" + ATQLegir + ";" + STAMINALegit + ";" + RESLegit + ";" + LUCKLegit + ";" + falselevel + ";" + currentExp + ";" + GM.gold + ";" + Points;
 			SG.saveProgress (statsForSG);
 			SG.saveStats(statsForSG);
 			SG.setStats ();
@@ -337,6 +340,7 @@ public class PlayerStats : MonoBehaviour {
 	{
 		if (!HadConfirm) {
 			//(SPM.win && !isActive && HadConfirm && PSAuxliarBool && !SPM.wantcontinue) 
+
 			PSAuxliarBool = true;
 			HadConfirm = true;
 			isActive = false;
@@ -348,7 +352,9 @@ public class PlayerStats : MonoBehaviour {
 			LUCKNoNull=LUCKLegit;
 			SPEEDNoNull= SPEEDLegit;
 			isFirstTime = true;
-			hastoexit = false;
+			if (!hadwarp) {
+				hastoexit = false;
+			}
 			for (int i = 0; i < Count.Length; i++) {
 				Count[i] = FalseCount[i];
 			}

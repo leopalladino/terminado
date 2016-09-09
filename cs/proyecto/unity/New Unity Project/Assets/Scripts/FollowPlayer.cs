@@ -36,7 +36,6 @@ public class FollowPlayer : MonoBehaviour
 
 	void Start()
 	{
-
         isTurned = false;
 		isred = false;
 		canAttack = false;
@@ -59,10 +58,11 @@ public class FollowPlayer : MonoBehaviour
 			this.gameObject.GetComponent<SlimeController>().canmove = false;
 			range = Vector2.Distance(transform.position, target.position);
 		if (transform.position.x < target.position.x) {
-			uno= transform;
-			dos= target;
+			uno.position= transform.position;
+			dos.position= target.position;
             isTurned = true;
-			var lookPos = transform.position - target.position;
+
+			var lookPos = target.position - transform.position;
 			lookPos.y = 0;
 			var rotation = Quaternion.LookRotation(lookPos);
 			transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 80);
@@ -71,7 +71,7 @@ public class FollowPlayer : MonoBehaviour
 			dos = target;
             isTurned = false;
 
-			var lookPos = target.position - transform.position;
+			var lookPos = transform.position - target.position;
 			lookPos.y = 0;
 			var rotation = Quaternion.LookRotation(lookPos);
 			transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 80);

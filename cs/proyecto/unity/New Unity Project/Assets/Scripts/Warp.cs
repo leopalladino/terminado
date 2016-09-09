@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Warp : MonoBehaviour {
 	private SpawnPositionManager SPW;
+	private PlayerStats PS;
     public Transform warpTarget;
 	public bool WARPEO;
 	void Start () {
 		SPW = FindObjectOfType <SpawnPositionManager>();
-
-
+		PS = FindObjectOfType <PlayerStats>();
 	}
 
     IEnumerator OnTriggerEnter2D (Collider2D other)
@@ -19,7 +19,7 @@ public class Warp : MonoBehaviour {
 		if (other.name == "Player" && other is BoxCollider2D)
         {
      
-	
+				PS.hadwarp = !PS.hadwarp;
 		ScreenFader sf = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
 
 
@@ -33,6 +33,7 @@ public class Warp : MonoBehaviour {
 			other.gameObject.transform.position = new Vector3 (warpTarget.position.x, warpTarget.position.y, -50);
 		
         Camera.main.transform.position = warpTarget.position;
+
 				if (SPW.continuar.activeInHierarchy == false) {
 					SPW.continuar.SetActive (true);
 				} else {
