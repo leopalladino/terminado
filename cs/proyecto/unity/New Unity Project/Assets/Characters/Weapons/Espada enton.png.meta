@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: 24014767a6917e9468863a7a964effe3
+timeCreated: 1473389439
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Espada enton_0
+    21300002: Espada enton_1
+    21300004: Espada enton_2
+    21300006: Espada enton_3
+    21300008: Espada enton_4
+    21300010: Espada enton_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Espada enton_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 213
+        height: 224
+      alignment: 9
+      pivot: {x: 0.28, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 142.36, y: 161.28}
+        - {x: 40.36, y: 59.28}
+        - {x: 75.36, y: 99.28}
+        - {x: 81.36, y: 130.28}
+        - {x: -59.64, y: 77.28}
+        - {x: -59.64, y: -62.72}
+        - {x: -5.6399994, y: -62.72}
+        - {x: 153.36, y: 98.28}
+        - {x: 153.36, y: 161.28}
+    - name: Espada enton_1
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 448
+        width: 214
+        height: 224
+      alignment: 9
+      pivot: {x: 0.28, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 132.07999, y: 70.28}
+        - {x: 154.07999, y: 128.28}
+        - {x: 154.07999, y: 161.28}
+        - {x: 124.07999, y: 161.28}
+        - {x: -59.920013, y: 89.28}
+        - {x: -59.920013, y: -62.72}
+        - {x: -39.920013, y: -62.72}
+        - {x: -33.920013, y: -56.72}
+        - {x: -33.920013, y: -52.72}
+        - {x: 11.079987, y: -13.720001}
+    - name: Espada enton_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 213
+        height: 224
+      alignment: 9
+      pivot: {x: 0.28, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 141.36, y: 161.28}
+        - {x: 17.36, y: 37.28}
+        - {x: 75.36, y: 100.28}
+        - {x: 71.36, y: 116.28}
+        - {x: 58.36, y: 115.28}
+        - {x: 23.36, y: 102.28}
+        - {x: -59.64, y: 73.28}
+        - {x: -59.64, y: -62.72}
+        - {x: -26.64, y: -62.72}
+        - {x: 153.36, y: 128.28}
+        - {x: 153.36, y: 161.28}
+    - name: Espada enton_3
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 224
+        width: 214
+        height: 224
+      alignment: 9
+      pivot: {x: 0.28, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 144.07999, y: 161.28}
+        - {x: 128.07999, y: 147.28}
+        - {x: 17.079987, y: 37.28}
+        - {x: 75.07999, y: 100.28}
+        - {x: 71.07999, y: 116.28}
+        - {x: 58.079987, y: 115.28}
+        - {x: -59.920013, y: 74.28}
+        - {x: -59.920013, y: -59.72}
+        - {x: -55.920013, y: -62.72}
+        - {x: -19.920013, y: -62.72}
+        - {x: 154.07999, y: 130.28}
+        - {x: 154.07999, y: 161.28}
+    - name: Espada enton_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 214
+        height: 224
+      alignment: 9
+      pivot: {x: 0.28, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 141.08, y: 161.28}
+        - {x: 16.079998, y: 35.28}
+        - {x: 70.08, y: 91.28}
+        - {x: 77.08, y: 115.28}
+        - {x: 58.079998, y: 117.28}
+        - {x: -59.920002, y: 74.28}
+        - {x: -59.920002, y: -51.72}
+        - {x: -49.920002, y: -62.72}
+        - {x: -27.920002, y: -62.72}
+        - {x: 154.08, y: 130.28}
+        - {x: 154.08, y: 161.28}
+    - name: Espada enton_5
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 214
+        height: 224
+      alignment: 9
+      pivot: {x: 0.28, y: 0.28}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 141.07999, y: 161.28}
+        - {x: 16.079987, y: 35.28}
+        - {x: 70.07999, y: 91.28}
+        - {x: 77.07999, y: 115.28}
+        - {x: 58.079987, y: 117.28}
+        - {x: -59.920013, y: 74.28}
+        - {x: -59.920013, y: -51.72}
+        - {x: -49.920013, y: -62.72}
+        - {x: -27.920013, y: -62.72}
+        - {x: 154.07999, y: 130.28}
+        - {x: 154.07999, y: 161.28}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

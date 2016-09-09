@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: 8f1f41bf233231345ae2a3e3cebd74fd
+timeCreated: 1473389555
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Hacha infernal_0
+    21300002: Hacha infernal_3
+    21300004: Hacha infernal_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Hacha infernal_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 231
+        width: 206
+        height: 207
+      alignment: 9
+      pivot: {x: 0.27, y: 0.27}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 57.379997, y: 46.109985}
+        - {x: 56.379997, y: 41.109985}
+        - {x: 67.38, y: 37.109985}
+        - {x: 142.38, y: 60.109985}
+        - {x: 142.38, y: 70.109985}
+        - {x: 140.38, y: 76.109985}
+        - {x: 74.38, y: 139.10999}
+        - {x: 66.38, y: 142.10999}
+        - {x: 61.379997, y: 142.10999}
+        - {x: 51.379997, y: 117.109985}
+        - {x: 38.379997, y: 59.109985}
+        - {x: 42.379997, y: 58.109985}
+        - {x: 45.379997, y: 58.109985}
+        - {x: 47.379997, y: 59.109985}
+        - {x: 44.379997, y: 56.109985}
+        - {x: -55.620003, y: -45.890015}
+        - {x: -55.620003, y: -55.890015}
+        - {x: -12.620003, y: -55.890015}
+        - {x: 62.379997, y: -23.890015}
+        - {x: 53.379997, y: 44.109985}
+        - {x: 58.379997, y: 49.109985}
+        - {x: 59.379997, y: 51.109985}
+      - - {x: 103.38, y: 146.10999}
+        - {x: 76.38, y: 146.10999}
+        - {x: 75.38, y: 144.10999}
+        - {x: 75.38, y: 137.10999}
+        - {x: 140.38, y: 75.109985}
+        - {x: 143.38, y: 75.109985}
+        - {x: 145.38, y: 77.109985}
+        - {x: 145.38, y: 104.109985}
+      - - {x: 103.38, y: 151.10999}
+        - {x: 103.38, y: 145.10999}
+        - {x: 146.38, y: 103.109985}
+        - {x: 150.38, y: 103.109985}
+        - {x: 150.38, y: 151.10999}
+    - name: Hacha infernal_3
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 231
+        width: 200
+        height: 200
+      alignment: 9
+      pivot: {x: 0.27, y: 0.27}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 128, y: 143}
+        - {x: 122, y: 144}
+        - {x: 47, y: 144}
+        - {x: -54, y: -40}
+        - {x: -54, y: -54}
+        - {x: -47, y: -54}
+        - {x: -20, y: -45}
+        - {x: 144, y: 37}
+        - {x: 144, y: 103}
+      - - {x: 98, y: 146}
+        - {x: 98, y: 139}
+        - {x: 140, y: 98}
+        - {x: 146, y: 98}
+        - {x: 146, y: 146}
+    - name: Hacha infernal_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 7
+        width: 196
+        height: 196
+      alignment: 9
+      pivot: {x: 0.27, y: 0.27}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 62.079998, y: 143.08}
+        - {x: -52.920002, y: -42.920002}
+        - {x: -52.920002, y: -52.920002}
+        - {x: -44.920002, y: -52.920002}
+        - {x: 143.08, y: 47.079998}
+        - {x: 143.08, y: 142.08}
+        - {x: 119.08, y: 143.08}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
