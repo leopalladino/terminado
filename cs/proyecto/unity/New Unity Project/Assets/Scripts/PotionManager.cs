@@ -45,7 +45,7 @@ public class PotionManager : MonoBehaviour {
 	}
 	public void PotionEffect()
 	{
-		if (Potions > 0) {
+		if (Potions > 0 && H.playerCurrentHealth != H.playerMaxHealth) {
 			isPotion = true;
 			Potions--;
 		}
