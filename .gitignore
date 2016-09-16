@@ -1,1 +1,6 @@
 Temp
+cs/proyecto/unity/New Unity Project/Library/metadata/
+*.dll
+*.mdb
+*.log
+*.exe
