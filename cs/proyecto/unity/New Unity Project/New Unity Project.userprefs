@@ -1,14 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PotionManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FollowPlayer.cs">
     <Files>
       <File FileName="Assets\Scripts\AnswerObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HurtEnemy.cs" Line="37" Column="25" />
-      <File FileName="Assets\Scripts\FollowPlayer.cs" Line="239" Column="27" />
-      <File FileName="Assets\Scripts\HurtPlayer.cs" Line="107" Column="23" />
-      <File FileName="Assets\Scripts\PlayerStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HurtEnemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FollowPlayer.cs" Line="56" Column="35" />
+      <File FileName="Assets\Scripts\HurtPlayer.cs" Line="52" Column="3" />
+      <File FileName="Assets\Scripts\PlayerStats.cs" Line="394" Column="45" />
       <File FileName="Assets\Scripts\PotionManager.cs" Line="48" Column="67" />
-      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="179" Column="8" />
+      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -21,6 +21,8 @@
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\cs\proyecto\unity\New Unity Project\Assets\ShopManager.cs" line="90" column="14" />
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\cs\proyecto\unity\New Unity Project\Assets\Scripts\PlayerStats.cs" line="216" column="1" />
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\cs\proyecto\unity\New Unity Project\Assets\Scripts\UIManager.cs" line="38" column="1" />
+      <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\Scripts\FollowPlayer.cs" line="263" column="1" />
+      <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\Scripts\HurtPlayer.cs" line="79" column="10" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
