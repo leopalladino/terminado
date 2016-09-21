@@ -13,7 +13,7 @@ public class LoadStats : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (had) {
-			SG.setStats ();
+		//	SG.setStats ();
 			had = false;
 		}
 	}

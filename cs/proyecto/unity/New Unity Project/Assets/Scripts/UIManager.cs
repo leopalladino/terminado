@@ -21,9 +21,22 @@ public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		DontDestroyOnLoad (this.gameObject);
+		Player = GameObject.Find ("Player");
 		thePS = FindObjectOfType <PlayerStats>();
         playerHealth = Player.GetComponent<Health>();
         playerStamina = Player.GetComponent<Stamina>();
+
+
+		StaminaBar = GameObject.Find ("Stamina(UIManager) - Slider").GetComponent<Slider>();
+		healthBar = GameObject.Find ("HP(UIManager) - Slider").GetComponent<Slider>();
+
+		HPText = GameObject.Find ("HP(UIManager) - Text").GetComponent<Text>();
+		LevelText = GameObject.Find ("Level(UIManager) - Text").GetComponent<Text>();
+		ExpText = GameObject.Find ("Exp(UIManager) - Text").GetComponent<Text>();
+
+
+		DPopUP =Instantiate(Resources.Load("PopUp")) as GameObject;
 
     }
 	

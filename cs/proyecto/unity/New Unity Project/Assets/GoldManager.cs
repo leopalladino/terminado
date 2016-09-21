@@ -12,6 +12,7 @@ public class GoldManager : MonoBehaviour {
 		gold = 0;
 		SG = FindObjectOfType<SaveGame>();
 		PS = FindObjectOfType<PlayerStats>();
+		goldTXT = GameObject.Find ("Gold(GoldManager) - Text").GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
@@ -21,10 +22,6 @@ public class GoldManager : MonoBehaviour {
 	public void AddGold(int quanty)
 	{
 		gold += quanty;
-		PS.statsForSG = PS.HPLegit + ";" + PS.ATQLegir + ";" + PS.STAMINALegit + ";" + PS.RESLegit + ";" + PS.LUCKLegit + ";" + PS.falselevel + ";" + PS.currentExp + ";" + gold + ";" + PS.Points;
-		SG.saveProgress (PS.statsForSG);
-		SG.saveStats(PS.statsForSG);
-		SG.setStats ();
 	}
 	public void RestGold(int quanty)
 	{

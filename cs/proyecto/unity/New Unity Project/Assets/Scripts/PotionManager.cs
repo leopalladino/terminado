@@ -14,6 +14,7 @@ public class PotionManager : MonoBehaviour {
 	void Start () {
 		H = FindObjectOfType<Health> (); 
 		GM = FindObjectOfType<GoldManager> ();
+		cant = GameObject.Find ("Potions(PotionsManager) - Text").GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame

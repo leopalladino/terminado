@@ -15,6 +15,8 @@ public class Health : MonoBehaviour {
 
 	public bool loaded = false;
 	private SaveGame SG; 
+	private PlayerStats PS;
+	public bool isdead = false;
     // Use this for initialization
     void Start () {
 		canbehurt = true;
@@ -23,17 +25,15 @@ public class Health : MonoBehaviour {
 		isdamaged = false;
 		auxfloat = 1f;
 		SG = FindObjectOfType<SaveGame>();
-
+		PS = FindObjectOfType<PlayerStats>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
         if (playerCurrentHealth <= 0)
         {
-
-		
-			SG.saveProgress (SG.getStats());
+			playerCurrentHealth = 0;
+			PS.saveStats ();		
             gameObject.SetActive(false);
 
 			Yield ();

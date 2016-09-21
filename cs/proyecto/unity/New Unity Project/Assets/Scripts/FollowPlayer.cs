@@ -261,7 +261,7 @@ public class FollowPlayer : MonoBehaviour
 			} else {
 				//	transform.position = Vector2.MoveTowards(transform.position, savePosition.position, 1);
 				TimerForAttack -= Time.deltaTime;
-				Debug.Log ("lolazo");
+		
 
 				if (TimerForAttack < 0f) {
 					canmovetowards = true;
@@ -269,7 +269,7 @@ public class FollowPlayer : MonoBehaviour
 				}
 			}
 		} else
-			Debug.Log ("no lolazo");
+			
 		if (cannotAttack) {
 		TimerForAttack -= Time.deltaTime;
 			desesperateIdleRestingBool = true;

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
+using System;
+using UnityEngine.UI;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class PlayerStats : MonoBehaviour {
 	public int currentLevel;
@@ -41,7 +44,6 @@ public class PlayerStats : MonoBehaviour {
 	public int currentLuck;
 	public float currentSpeed;
 
-	public Rigidbody2D TheRB2D;
 	private PlayerMovement PV;
 	public Health theH;
 	public Stamina theS;
@@ -59,7 +61,6 @@ public class PlayerStats : MonoBehaviour {
 	public bool isFirstTime;
 
 	public Text puntos;
-	private bool LevelEarn;
 
 	public int falselevel;
 	public bool isReset;
@@ -73,36 +74,40 @@ public class PlayerStats : MonoBehaviour {
 	public string statsForSG;
 	public bool hastoexit = true;
 	private GameObject statsButton;
+
+	private bool itis = false;
 	// Use this for initialization
 	void Start () {
+		
 		SConfirm = false;
 
 		limit = 8;
 		statsButton = GameObject.Find ("statsButton");
+		statsButton = GameObject.Find ("statsButton");
 		isReset = false;
 		falselevel = 1;
-		LevelEarn = false;
 		currentLevel = 1;
 		currentLevelFalse = 1;
 		isFirstTime = true;
 		PV = FindObjectOfType<PlayerMovement>();
 		GM = FindObjectOfType<GoldManager>();
+		SPM = FindObjectOfType<SpawnPositionManager>();
 		HadConfirm = true;
 		isActive = false;
 
-		HPNoNull = 0;
-		ATQNoNull = 0;
-		STAMINANoNull = 0;
-		RESNoNull = 0;
-		LUCKNoNull = 0;
-		SPEEDNoNull = 0;
+		HPNoNull = 1;
+		ATQNoNull = 1;
+		STAMINANoNull = 1;
+		RESNoNull = 1;
+		LUCKNoNull = 1;
+		SPEEDNoNull = 1;
 
-		HPLegit = 0;
-		ATQLegir = 0;
-		STAMINALegit = 0;
-		RESLegit = 0;
-		LUCKLegit = 0;
-		SPEEDLegit = 0;
+		HPLegit = 1;
+		ATQLegir = 1;
+		STAMINALegit = 1;
+		RESLegit = 1;
+		LUCKLegit = 1;
+		SPEEDLegit = 1;
 	
 		PSAuxliarBool = true;
 
@@ -130,11 +135,14 @@ public class PlayerStats : MonoBehaviour {
 		for (int i = 0; i < FalseCount.Length; i++) {
 			FalseCount [i] = 0;
 		}
-		statsForSG = SG.getStats ();
-		if (statsForSG != "") {
-			SG.saveProgress (statsForSG);
-			//SG.setStats ();
-		}
+			
+
+
+
+
+			loadStats ();
+
+
 	}
 	
 	// Update is called once per frame
@@ -154,9 +162,8 @@ public class PlayerStats : MonoBehaviour {
 				Points++;
 				FalsePoints = Points;
 
-				statsForSG = HPLegit + ";" + ATQLegir + ";" + STAMINALegit + ";" + RESLegit + ";" + LUCKLegit + ";" + falselevel + ";" + currentExp + ";" + GM.gold + ";" + Points;
-				SG.saveProgress (statsForSG);
-				SG.saveStats(statsForSG);
+				saveStats();
+
 			}
 
 			if (SPM.win && !isActive && HadConfirm && PSAuxliarBool && !SPM.wantcontinue && hastoexit) {
@@ -167,24 +174,7 @@ public class PlayerStats : MonoBehaviour {
 				HadConfirm = false;
 				isActive = true;
 				if (isFirstTime) {
-					HP (HPLegit, null);
-					HPNoNull++;
-					HPLegit++;
-					STAMINA (STAMINALegit, null);
-					STAMINANoNull++;
-					STAMINALegit++;
-					RES (RESLegit, null);
-					RESNoNull++;
-					RESLegit++;
-					ATQ (ATQLegir, null);
-					ATQNoNull++;
-					ATQLegir++;
-					//			SPEED (0, null);
-					LUCK (LUCKLegit, null);
-					LUCKNoNull++;
-					LUCKLegit++;
-					isFirstTime = false;
-					SG.setStats ();
+					
 				}
 			}
 		}
@@ -217,7 +207,6 @@ public class PlayerStats : MonoBehaviour {
 	{
 
 		currentExp += experienceToAdd;
-		Debug.Log (currentExp);
     }
 	public void LevelUp()
 	{
@@ -242,8 +231,7 @@ public class PlayerStats : MonoBehaviour {
 			STAMINALegit = currentStamina;
 			RESLegit = currentDefense;
 			LUCKLegit = currentLuck;
-*/
-
+			*/
 			HPLegit= HPNoNull;
 			ATQLegir= ATQNoNull;
 			STAMINALegit=STAMINANoNull;
@@ -261,10 +249,8 @@ public class PlayerStats : MonoBehaviour {
 			ConfirmS.SetActive(false);
 			LV.SetActive (false);
 			SG.ConfirmSavePS = true;
-			statsForSG = HPLegit + ";" + ATQLegir + ";" + STAMINALegit + ";" + RESLegit + ";" + LUCKLegit + ";" + falselevel + ";" + currentExp + ";" + GM.gold + ";" + Points;
-			SG.saveProgress (statsForSG);
-			SG.saveStats(statsForSG);
-			SG.setStats ();
+					saveStats();
+			
 		}
 		}
 		}
@@ -292,46 +278,75 @@ public class PlayerStats : MonoBehaviour {
 			for (int i = 0; i < Count.Length; i++) {
 				Count[i] = FalseCount[i];
 			}
-			HP (HPLegit, null);
-			STAMINA (STAMINALegit, null);
-			RES (RESLegit, null);
-			ATQ (ATQLegir, null);
+			HP (HPLegit);
+			STAMINA (STAMINALegit);
+			RES (RESLegit);
+			ATQ (ATQLegir);
 //			SPEED (SPEEDLegit, null);
-			LUCK (LUCKLegit, null);
+			LUCK (LUCKLegit);
 			isFirstTime = false;
-
-
-
 		}
 	}
 	public void OnOffLevelUpGO(){
+
 		if (!LV.activeSelf) {
 			statsButton.GetComponent<Image> ().color = Color.white;
 			currentLevel = falselevel;
 			LV.SetActive (true);
-			PSAuxliarBool = false;
-			HadConfirm = false;
-			isActive = true;
-			if (isFirstTime) {
-				HP (HPLegit, null);
+			if (itis) {
+				itis = false;
+				HP (HPLegit);
 				HPNoNull++;
 				HPLegit++;
-				STAMINA (STAMINALegit, null);
+				STAMINA (STAMINALegit);
 				STAMINANoNull++;
 				STAMINALegit++;
-				RES (RESLegit, null);
+				RES (RESLegit);
 				RESNoNull++;
 				RESLegit++;
-				ATQ (ATQLegir, null);
+				ATQ (ATQLegir);
 				ATQNoNull++;
 				ATQLegir++;
 				//			SPEED (0, null);
-				LUCK (LUCKLegit, null);
+				LUCK (LUCKLegit);
 				LUCKNoNull++;
 				LUCKLegit++;
 				isFirstTime = false;
-				SG.setStats ();
+				saveStats ();
 			}
+			PSAuxliarBool = false;
+			HadConfirm = false;
+			isActive = true;
+
+			Points = FalsePoints;
+
+			currentHP = HPLevels[HPLegit];
+			currentAttack = attacksLevels[ATQLegir];
+			currentStamina = staminaLevels[STAMINALegit];
+			currentDefense= defenseLevels[RESLegit];
+			currentLuck=luckLevels[LUCKLegit];
+
+			HPNoNull = HPLegit;
+			ATQNoNull = ATQLegir;
+			STAMINANoNull = STAMINALegit;
+			RESNoNull = RESLegit;
+			LUCKNoNull = LUCKLegit;
+			SPEEDNoNull = SPEEDLegit;
+			//currentSpeed= SPEEDLegit;
+
+			for (int i = 0; i < Count.Length; i++) {
+				Count[i] = FalseCount[i];
+			}
+			isFirstTime = true;
+			HP (HPLegit);
+			STAMINA (STAMINALegit);
+			RES (RESLegit);
+			//ATQ (ATQLegir);
+			currentAttack = attacksLevels[ATQLegir];
+			GameObject.Find ("ATQText").GetComponent<Text>().text = "" + currentAttack;
+			//			SPEED (SPEEDLegit, null);
+			LUCK (LUCKLegit);
+			isFirstTime = false;
 		} else {
 			Exit ();
 		}
@@ -351,6 +366,7 @@ public class PlayerStats : MonoBehaviour {
 			RESNoNull=RESLegit ;
 			LUCKNoNull=LUCKLegit;
 			SPEEDNoNull= SPEEDLegit;
+			/*
 			isFirstTime = true;
 			if (!hadwarp) {
 				hastoexit = false;
@@ -358,12 +374,13 @@ public class PlayerStats : MonoBehaviour {
 			for (int i = 0; i < Count.Length; i++) {
 				Count[i] = FalseCount[i];
 			}
-			HP (HPLegit, null);
-			STAMINA (STAMINALegit, null);
-			RES (RESLegit, null);
-			ATQ (ATQLegir, null);
+			HP (HPLegit);
+			STAMINA (STAMINALegit);
+			RES (RESLegit);
+			ATQ (ATQLegir);
 			//			SPEED (SPEEDLegit, null);
-			LUCK (LUCKLegit, null);
+			LUCK (LUCKLegit);
+			*/
 			isFirstTime = false;
 			//SPEEDLegit = currentSpeed;
 			isActive = false;
@@ -377,8 +394,9 @@ public class PlayerStats : MonoBehaviour {
 			LV.SetActive (false);
 		}
 	}
-	public void HP(int points, Text text)
+	public void HP(int points)
 	{
+		Text text;
 		if (Count[1] != limit) {
 		if (!isFirstTime) {
 			if (Points >  0) {
@@ -391,84 +409,75 @@ public class PlayerStats : MonoBehaviour {
 		Count [1]++;
 							}
 		} else {
-			text = GameObject.Find ("HPText").GetComponent<Text>();
 			currentHP = HPLevels[points];
 			theH.playerMaxHealth = currentHP;
-			text.text = "" +  currentHP;
-			//HPNoNull++;
+			GameObject.Find ("HPText").GetComponent<Text>().text = "" +  currentHP;
+			
 		}
-	/*	if (isReset) {
-			text = GameObject.Find ("HPText").GetComponent<Text>();
-			currentHP = HPLevels[points];
-			theH.playerMaxHealth = currentHP;
-			text.text = "" +  currentHP;
+	}
+	}
+	public void ATQ(int points)
+	{
+		Text text;
+		if (Count[4] != limit) {
+			if (!isFirstTime) {
+				if (Points >  0) {
+					text = GameObject.Find ("ATQText").GetComponent<Text>();
+					currentAttack = attacksLevels[points];
+					Points--;
+					text.text = "" + currentAttack;
+					ATQNoNull++;
+					Count [4]++;
+				}
+			} else {
+				currentAttack = attacksLevels[points];
+				GameObject.Find ("ATQText").GetComponent<Text>().text = "" + currentAttack;
 
-		}*/
+			}
+		}
+
 	}
-	}
-	public void STAMINA(int points, Text text)
+	public void STAMINA(int points)
 	{
 		if (Count[2] != limit) {
 		if (!isFirstTime) {
 			if (Points >  0) {
-		text = GameObject.Find ("STAText").GetComponent<Text>();
 		theS.playerMaxStamina = staminaLevels[points];
 		Points--;
-		text.text ="" +  theS.playerMaxStamina;
+					GameObject.Find ("STAText").GetComponent<Text>().text ="" +  theS.playerMaxStamina;
 		STAMINANoNull++;
 		Count [2]++;
 			}	
 		} else {
-			text = GameObject.Find ("STAText").GetComponent<Text>();
 			theS.playerMaxStamina = staminaLevels[points];
-			text.text ="" +  theS.playerMaxStamina;
-			//STAMINANoNull++;
+			GameObject.Find ("STAText").GetComponent<Text>().text ="" +  theS.playerMaxStamina;
+		
 		}
 	}
 		}
 
-	public void RES(int points, Text text)
+	public void RES(int points)
 	{
+		Text text;
 		if (Count[3] != limit) {
 		if (!isFirstTime) {
 			if (Points >  0) {
-		text = GameObject.Find ("RESText").GetComponent<Text>();
 		currentDefense = defenseLevels[points];
 		Points--;
-		text.text = "" + currentDefense;
+		GameObject.Find ("RESText").GetComponent<Text>().text = "" + currentDefense;
 		RESNoNull++;
 		Count [3]++;
 			} 
 		} else {
-			text = GameObject.Find ("RESText").GetComponent<Text>();
 			currentDefense = defenseLevels[points];
-			text.text = "" + currentDefense;
-		//	RESNoNull++;
+			GameObject.Find ("RESText").GetComponent<Text>().text = "" + currentDefense;
+		
 		}
 	}
 	}
 
-	public void ATQ(int points, Text text)
-	{
-			if (Count[4] != limit) {
-		if (!isFirstTime) {
-			if (Points >  0) {
-		text = GameObject.Find ("ATQText").GetComponent<Text>();
-		currentAttack = attacksLevels[points];
-		Points--;
-		text.text = "" + currentAttack;
-		ATQNoNull++;
-		Count [4]++;
-			}
-		} else {
-			text = GameObject.Find ("ATQText").GetComponent<Text>();
-			currentAttack = attacksLevels[points];
-			text.text = "" + currentAttack;
-		//	ATQNoNull++;
-		}
-	}
 
-	}
+
 	public void SPEED(int points, Text text)
 	{
 		//currentSpeed = speedLevels[points];
@@ -477,8 +486,9 @@ public class PlayerStats : MonoBehaviour {
 		//text.text = "" + currentSpeed;
 	}
 
-	public void LUCK(int points, Text text)
+	public void LUCK(int points)
 	{
+		Text text;
 				if (Count[5] != limit) {
 		if (!isFirstTime) {
 			if (Points > 0) {
@@ -490,10 +500,9 @@ public class PlayerStats : MonoBehaviour {
 		Count [5]++;
 			} 
 		} else {
-			text = GameObject.Find ("LUCKText").GetComponent<Text>();
 			currentLuck = luckLevels[points];
-			text.text = "" + currentLuck;
-		//	LUCKNoNull++;
+				GameObject.Find ("LUCKText").GetComponent<Text>().text = "" + currentLuck;
+
 		}
 		}
 	}
@@ -502,22 +511,22 @@ public class PlayerStats : MonoBehaviour {
 	{
 		switch (parent) {
 		case "HP":
-			HP (HPNoNull + 1, null);
+			HP (HPNoNull + 1);
 			break;
 		case "STAMINA":
-			STAMINA (STAMINANoNull + 1, null);
+			STAMINA (STAMINANoNull + 1);
 			break;
 		case "RES":
-			RES (RESNoNull + 1, null);
+			RES (RESNoNull + 1);
 			break;
 		case "ATQ":
-			ATQ (ATQNoNull + 1, null);
+			ATQ (ATQNoNull + 1);
 			break;
 		case "SPEED":
 			//SPEED (SPEEDNoNull + 1, null);
 			break;
 		case "LUCK":
-			LUCK (LUCKNoNull + 1, null);
+			LUCK (LUCKNoNull + 1);
 			break;
 
 		}
@@ -531,5 +540,110 @@ public class PlayerStats : MonoBehaviour {
 	public void NoSuperConfirm()
 	{
 		ConfirmS.SetActive(false);
+	}
+
+	/*
+	 public PlayerStats BringStats( PlayerData)
+	{
+		_PlayerData = this;
+		return _PlayerData;
+	}
+	*/
+	public void saveStats()
+	{
+		Debug.Log ("Se guardaron datos");
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
+
+		PlayerData _PlayerData = new PlayerData();
+		_PlayerData.HPLegit = HPLegit;
+		_PlayerData.ATQLegir = ATQLegir;
+		_PlayerData.STAMINALegit = STAMINALegit;
+		_PlayerData.RESLegit = RESLegit;
+		_PlayerData.LUCKLegit = LUCKLegit;
+		_PlayerData.falselevel= falselevel;
+		_PlayerData.currentExp= currentExp;
+		//		PlayerData.GM.gold = Gold;
+		_PlayerData.Points= Points;
+
+		_PlayerData.HPNoNull = HPNoNull;
+		_PlayerData.ATQNoNull = ATQNoNull;
+		_PlayerData.STAMINANoNull = STAMINANoNull;
+		_PlayerData.RESNoNull = RESNoNull;
+		_PlayerData.LUCKNoNull = LUCKNoNull;
+
+		bf.Serialize (file,_PlayerData);
+		file.Close ();
+	}
+	public void loadStats()
+	{
+		if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
+		Debug.Log ("Se cargaron datos");
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+			PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
+		file.Close ();
+		HPLegit = _PlayerData.HPLegit;
+		ATQLegir = _PlayerData.ATQLegir;
+		STAMINALegit = _PlayerData.STAMINALegit;
+		RESLegit = _PlayerData.RESLegit;
+		LUCKLegit = _PlayerData.LUCKLegit;
+		falselevel= _PlayerData.falselevel;
+		currentExp= _PlayerData.currentExp;
+//		GM.gold = PlayerData.GM.gold;
+		Points= _PlayerData.Points;
+
+			HPNoNull = HPLegit;
+			ATQNoNull = ATQLegir;
+			STAMINANoNull = STAMINALegit;
+			RESNoNull = RESLegit;
+			LUCKNoNull = LUCKLegit;
+
+		HPNoNull = _PlayerData.HPNoNull;
+		ATQNoNull = _PlayerData.ATQNoNull;
+		STAMINANoNull = _PlayerData.STAMINANoNull;
+		RESNoNull = _PlayerData.RESNoNull;
+		LUCKNoNull = _PlayerData.LUCKNoNull;
+
+
+		currentHP = HPLevels[HPLegit];
+		currentAttack = attacksLevels[ATQLegir];
+		theH.playerMaxHealth = currentHP;
+		theS.playerMaxStamina = staminaLevels [STAMINALegit];
+		currentDefense = defenseLevels[STAMINALegit];
+		currentLuck = luckLevels[LUCKLegit];
+		currentLevel = falselevel;
+		FalsePoints = Points;
+
+		if (isFirstTime) {
+			theS.playerCurrentStamina = theS.playerMaxStamina; 
+			theH.playerCurrentHealth = theH.playerMaxHealth;
+		}
+	}
+	}
+
+	[Serializable]
+	class PlayerData
+	{
+		public int HPLegit {get;set;}
+		public int ATQLegir{get;set;}
+		public int STAMINALegit{get;set;}
+		public int RESLegit{get;set;}
+		public int LUCKLegit{get;set;}
+		public int falselevel{get;set;}
+		public int currentExp{get;set;}
+		//	PS.GM.gold = PlayerData.GM.gold;
+		public int Points{get;set;}
+		public int HPNoNull{get;set;}
+		public int ATQNoNull{get;set;}
+		public int STAMINANoNull{get;set;}
+		public int RESNoNull{get;set;}
+		public int LUCKNoNull{get;set;}
+
+
+		public PlayerData()
+		{
+			
+		}
 	}
 }

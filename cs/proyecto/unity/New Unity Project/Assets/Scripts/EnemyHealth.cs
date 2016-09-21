@@ -31,9 +31,6 @@ public class EnemyHealth : MonoBehaviour {
 			Instantiate(item, transform.position, transform.rotation);
 			thePS.AddExperience (xpToGive);
 			this.transform.parent.gameObject.SetActive(false);
-			thePS.statsForSG = thePS.HPLegit + ";" + thePS.ATQLegir + ";" + thePS.STAMINALegit + ";" + thePS.RESLegit + ";" + thePS.LUCKLegit + ";" + thePS.falselevel + ";" + thePS.currentExp + ";" + thePS.GM.gold + ";" + thePS.Points;
-			theSG.saveProgress (thePS.statsForSG);
-			theSG.saveStats(thePS.statsForSG);
 
 
             /*waitToReload -= Time.deltaTime;

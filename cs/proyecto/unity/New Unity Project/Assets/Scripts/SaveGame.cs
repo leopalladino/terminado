@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class SaveGame : MonoBehaviour {
 	public bool ConfirmSavePS;
@@ -19,88 +22,100 @@ public class SaveGame : MonoBehaviour {
 		ConfirmSavePS = false;
 		PS = FindObjectOfType<PlayerStats>();
 		GM = FindObjectOfType<GoldManager>();
+		PlayerData _PlayerData = new PlayerData();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (ConfirmSaveHT) {
-			string auxSTR = getStats ();
-			saveProgress (auxSTR);
+			//string auxSTR = getStats ();
+			//saveProgress (auxSTR);
 			ConfirmSaveHT = false;
 		}
 	}
 
-	public void saveStats(string stats)
+	public void saveStats(int HP, int ATQ, int STAMINA, int RES, int LUCK, int falseLevel, int Exp, int Gold, int Points)
 	{
-		strSaveStats = PlayerPrefs.GetString("Save1", stats);
-		statsSTR = stats.Split (';');
-	}
-	public void saveProgress(string progress)
-	{
-		PlayerPrefs.SetString("Save1",progress); 
-		Debug.Log (progress);
-	}
-	public string getStats()
-	{	
-		return PlayerPrefs.GetString("Save1"); 
-	}
-	public void setFirstTime()
-	{
-		PlayerPrefs.SetString("Save2", "yes"); 
-	}
-	public void setStats()
-	{
+		Debug.Log ("Se guardaron datos");
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+		PlayerData _PlayerData = new PlayerData();
+		_PlayerData.HPLegit = HP;
+		_PlayerData.ATQLegir = ATQ;
+		_PlayerData.STAMINALegit = STAMINA;
+		_PlayerData.RESLegit = RES;
+		_PlayerData.LUCKLegit = LUCK;
+		_PlayerData.falselevel= falseLevel;
+		_PlayerData.currentExp= Exp;
+//		PlayerData.GM.gold = Gold;
+		_PlayerData.Points= Points;
 
-		strSetStats = getStats ();
-		saveStats (strSetStats);
-		for (int i = 0; i < statsSTR.Length; i++) {
-			switch (i) {
-			case 0:
-				PS.HPLegit = int.Parse (statsSTR [0]);
-				PS.HPNoNull = PS.HPLegit;
-				PS.currentHP = PS.HPLevels[PS.HPLegit];
-				PS.theH.playerMaxHealth = PS.currentHP;
-				if (PS.isFirstTime) {
-					PS.theH.playerCurrentHealth = PS.theH.playerMaxHealth;
-				}
-				break;
-			case 1:
-				PS.ATQLegir = int.Parse(statsSTR [1]);
-				PS.ATQNoNull = PS.ATQLegir;
-				PS.currentAttack = PS.attacksLevels[PS.ATQLegir];
-				break;
-			case 2:
-				PS.STAMINALegit = int.Parse (statsSTR [2]);
-				PS.STAMINANoNull = PS.STAMINALegit;
-				PS.theS.playerMaxStamina = PS.staminaLevels [PS.STAMINALegit];
-				if (PS.isFirstTime) {
-					PS.theS.playerCurrentStamina = PS.theS.playerMaxStamina; 
-				}
-				break;
-			case 3:
-				PS.RESLegit = int.Parse(statsSTR [3]);
-				PS.RESNoNull= PS.RESLegit;
-				PS.currentDefense = PS.defenseLevels[PS.STAMINALegit];
-				break;
-			case 4:
-				PS.LUCKLegit = int.Parse(statsSTR [4]);
-				PS.currentLuck = PS.luckLevels[PS.LUCKLegit];
-				break;
-			case 5:
-				PS.currentLevel = int.Parse (statsSTR [5]);
-				PS.falselevel = PS.currentLevel;
-				break;
-			case 6:
-				PS.currentExp = int.Parse(statsSTR [6]);
-				break;
-			case 7:
-				GM.gold = int.Parse (statsSTR [7]);
-				break;
-			case 8:
-				PS.Points = int.Parse (statsSTR [8]);
-				PS.FalsePoints = PS.Points;
-				break;
-			}
+		_PlayerData.HPNoNull = HP;
+		_PlayerData.ATQNoNull = ATQ;
+		_PlayerData.STAMINANoNull = STAMINA;
+		_PlayerData.RESNoNull = RES;
+		_PlayerData.LUCKNoNull = LUCK;
+
+		bf.Serialize (file,_PlayerData);
+		file.Close ();
+	}
+	public void loadStats(int HP, int ATQ, int STAMINA, int RES, int LUCK, int falseLevel, int Exp, int Gold, int Points)
+	{
+		Debug.Log ("Se cargaron datos");
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+		PlayerData _PlayerData = new PlayerData();
+		_PlayerData = (PlayerData)bf.Deserialize(file);
+		file.Close ();
+		PS.HPLegit = _PlayerData.HPLegit;
+		PS.ATQLegir = _PlayerData.ATQLegir;
+		PS.STAMINALegit = _PlayerData.STAMINALegit;
+		PS.RESLegit = _PlayerData.RESLegit;
+		PS.LUCKLegit = _PlayerData.LUCKLegit;
+		PS.falselevel= _PlayerData.falselevel;
+		PS.currentExp= _PlayerData.currentExp;
+	//	PS.GM.gold = PlayerData.GM.gold;
+		PS.Points= _PlayerData.Points;
+
+		PS.HPNoNull = _PlayerData.HPNoNull;
+		PS.ATQNoNull = _PlayerData.ATQNoNull;
+		PS.STAMINANoNull = _PlayerData.STAMINANoNull;
+		PS.RESNoNull = _PlayerData.RESNoNull;
+		PS.LUCKNoNull = _PlayerData.LUCKNoNull;
+
+
+		PS.currentHP = PS.HPLevels[PS.HPLegit];
+		PS.theH.playerMaxHealth = PS.currentHP;
+		PS.theS.playerMaxStamina = PS.staminaLevels [PS.STAMINALegit];
+		PS.currentDefense = PS.defenseLevels[PS.STAMINALegit];
+		PS.currentLuck = PS.luckLevels[PS.LUCKLegit];
+		PS.falselevel = PS.currentLevel;
+		PS.FalsePoints = PS.Points;
+
+		if (PS.isFirstTime) {
+			PS.theS.playerCurrentStamina = PS.theS.playerMaxStamina; 
+			PS.theH.playerCurrentHealth = PS.theH.playerMaxHealth;
 		}
+
+	}
+
+	[Serializable]
+ public class PlayerData
+	{
+		public int HPLegit;
+		public int ATQLegir;
+		public int STAMINALegit;
+		public int RESLegit;
+		public int LUCKLegit;
+		public int falselevel;
+		public int currentExp;
+		//	PS.GM.gold = PlayerData.GM.gold;
+		public int Points;
+
+		public int HPNoNull;
+		public int ATQNoNull;
+		public int STAMINANoNull;
+		public int RESNoNull;
+		public int LUCKNoNull;
 	}
 }
