@@ -31,11 +31,12 @@ public class ShopManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gold = FindObjectOfType<GoldManager> ();
-		hover.SetActive(false);
+		//hover.SetActive(false);
 		waterIsOn = false;
 		thunderIsON = false;
-	//	anim = GameObject.Find ("sword").GetComponent<Animator> ();
-		weapon.GetComponent<SpriteRenderer> ().sprite = null;
+		weapon = GameObject.FindGameObjectWithTag ("Weapon");
+		anim = weapon.GetComponent<Animator> ();
+	    //anim = weapon.GetComponent<Animator> (); DEBERÍA ARREGLARLO ALGÚN DÍA
 	}
 	
 	// Update is called once per frame

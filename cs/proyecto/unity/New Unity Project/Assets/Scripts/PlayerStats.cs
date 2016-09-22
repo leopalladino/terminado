@@ -89,6 +89,7 @@ public class PlayerStats : MonoBehaviour {
 		currentLevel = 1;
 		currentLevelFalse = 1;
 		isFirstTime = true;
+		LV.SetActive (false);
 		PV = FindObjectOfType<PlayerMovement>();
 		GM = FindObjectOfType<GoldManager>();
 		SPM = FindObjectOfType<SpawnPositionManager>();
@@ -113,12 +114,12 @@ public class PlayerStats : MonoBehaviour {
 
 		currentSpeed = 8;
 		//LV.SetActive (false); ESTO SE TIEWNE QUE ACTIVAR CUANDO LEVEL UP
-		if (Application.loadedLevelName != "escena2") {
+		//if (Application.loadedLevelName != "escena2") {
 			currentStamina = staminaLevels [currentLevel];
 			currentHP = HPLevels [currentLevel];
 			currentAttack = attacksLevels [currentLevel];
 			currentDefense = defenseLevels [currentLevel];
-		}
+		//}
 		/*Points = 0; //tENGO QUE SACAR ESTO
 		FalsePoints = 0;*/
 		theH = FindObjectOfType <Health>();
@@ -147,7 +148,24 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Application.loadedLevelName != "escena2") {
+		/*
+		 if (hadwarp) {
+			statsButton = GameObject.Find ("statsButton");
+			LV = GameObject.FindGameObjectWithTag ("LevelUp");	
+			PV = FindObjectOfType<PlayerMovement>();
+			GM = FindObjectOfType<GoldManager>();
+			SPM = FindObjectOfType<SpawnPositionManager>();
+			theH = FindObjectOfType <Health>();
+			theS = FindObjectOfType <Stamina>();
+			SPM = FindObjectOfType <SpawnPositionManager>();
+			SG = FindObjectOfType <SaveGame>();
+			loadStats ();
+			hadwarp = false;
+		}
+		*/
+
+		if (Application.loadedLevelName != "escena2" && LV.activeSelf) {
+			
 			puntos.text = "Puntos restantes: " + Points;
 		
 		}
@@ -578,6 +596,7 @@ public class PlayerStats : MonoBehaviour {
 	public void loadStats()
 	{
 		if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
+			print(Application.persistentDataPath);
 		Debug.Log ("Se cargaron datos");
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);

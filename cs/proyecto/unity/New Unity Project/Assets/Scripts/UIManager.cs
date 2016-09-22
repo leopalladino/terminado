@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		DontDestroyOnLoad (this.gameObject);
 		Player = GameObject.Find ("Player");
 		thePS = FindObjectOfType <PlayerStats>();
         playerHealth = Player.GetComponent<Health>();

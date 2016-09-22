@@ -14,7 +14,7 @@ public class ShopHolder : MonoBehaviour {
 		HadPopUp = false;
 		UIMan = FindObjectOfType<UIManager>();
 		SPW = FindObjectOfType<SpawnPositionManager>();
-		hover.SetActive(false);
+		//hover.SetActive(false);
 	}
 	
 	// Update is called once per frame

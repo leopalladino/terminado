@@ -8,6 +8,7 @@ public class PlayerStartPoint : MonoBehaviour {
     private CameraController theCamera;
     public Vector2 startDirection;
     public bool haveStarted = false;
+	public PlayerStats PS;
 
     //hacer otro playerstartpoint pero para cuando se inicie el juego. hacer bool piority, darle prioridad a cada uno. destruir el principal al hacer warp.
 
@@ -16,7 +17,7 @@ public class PlayerStartPoint : MonoBehaviour {
 
         if (haveStarted == false)
 		{   
-			
+			PS = FindObjectOfType<PlayerStats>();
             thePlayer = FindObjectOfType<PlayerMovement>();
             thePlayer.transform.position = transform.position;
 
@@ -25,6 +26,7 @@ public class PlayerStartPoint : MonoBehaviour {
            theCamera = FindObjectOfType<CameraController>();
             theCamera.transform.position = new Vector3(transform.position.x, transform.position.y, theCamera.transform.position.z);
             haveStarted = true;
+			PS.hadwarp = true;
 		
         }
     }

@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour {
 	private ShopHolder Shopi;
     // Use this for initialization
     void Start() {
-		
 		Shop = FindObjectOfType<ShopManager>();
 		Shopi = FindObjectOfType<ShopHolder>();
 		PM = FindObjectOfType<PotionManager>();
@@ -66,6 +65,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (Application.loadedLevelName != "escena2") {
 			OnRightClick ();
 		}
+			
 
 
 
@@ -172,13 +172,16 @@ public class PlayerMovement : MonoBehaviour {
 		if (!attacking && lastMove.y == -1f || !attacking && lastMove.y == 0f ) {
 			weapon.GetComponent<SpriteRenderer>().sortingOrder = 3;
 		}
+	
 		if (Application.loadedLevelName != "escena2") {
-			if (Shopi.isinzone == false) {
-				if (Input.GetKeyDown (KeyCode.F)) {
-					PM.PotionEffect ();
-					//
-				}	
+			
+		}
+		if (Shopi.isinzone == false) {
+			if (Input.GetKeyDown (KeyCode.F)) {
+				PM.PotionEffect ();
 			}
+		}
+
 	
         if (Input.GetMouseButtonDown(0))
         {
@@ -213,7 +216,7 @@ public class PlayerMovement : MonoBehaviour {
             }
 			}
 
-        }
+        
 	
 		}
 
@@ -238,10 +241,10 @@ public class PlayerMovement : MonoBehaviour {
 					
                     waitToWaste -= Time.deltaTime;
                     if (waitToWaste < 0)
-					{	if (Application.loadedLevelName != "escena2") {
+					{	
 							this.gameObject.GetComponent<Stamina> ().WastingStamina (5);
 							waitToWaste = 0.5f;
-						}
+
                     }
 
                 }
