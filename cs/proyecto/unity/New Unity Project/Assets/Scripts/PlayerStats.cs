@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class PlayerStats : MonoBehaviour {
+[Serializable]
+public class PlayerStats  {
 	public int currentLevel;
 	public int currentLevelFalse;
 	public int currentExp;
@@ -571,58 +572,69 @@ public class PlayerStats : MonoBehaviour {
 	{
 		Debug.Log ("Se guardaron datos");
 		BinaryFormatter bf = new BinaryFormatter ();
-		FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
 
 		PlayerData _PlayerData = new PlayerData();
-		_PlayerData.HPLegit = HPLegit;
-		_PlayerData.ATQLegir = ATQLegir;
-		_PlayerData.STAMINALegit = STAMINALegit;
-		_PlayerData.RESLegit = RESLegit;
-		_PlayerData.LUCKLegit = LUCKLegit;
-		_PlayerData.falselevel= falselevel;
-		_PlayerData.currentExp= currentExp;
-		//		PlayerData.GM.gold = Gold;
-		_PlayerData.Points= Points;
 
-		_PlayerData.HPNoNull = HPNoNull;
-		_PlayerData.ATQNoNull = ATQNoNull;
-		_PlayerData.STAMINANoNull = STAMINANoNull;
-		_PlayerData.RESNoNull = RESNoNull;
-		_PlayerData.LUCKNoNull = LUCKNoNull;
+		_PlayerData.PS.HPLegit = HPLegit;
+		_PlayerData.PS.ATQLegir = ATQLegir;
+		_PlayerData.PS.STAMINALegit = STAMINALegit;
+		_PlayerData.PS.RESLegit = RESLegit;
+		_PlayerData.PS.LUCKLegit = LUCKLegit;
+		_PlayerData.PS.falselevel= falselevel;
+		_PlayerData.PS.currentExp= currentExp;
 
-		bf.Serialize (file,_PlayerData);
-		file.Close ();
+		_PlayerData.PS.Points= Points;
+
+		_PlayerData.PS.HPNoNull = HPNoNull;
+		_PlayerData.PS.ATQNoNull = ATQNoNull;
+		_PlayerData.PS.STAMINANoNull = STAMINANoNull;
+		_PlayerData.PS.RESNoNull = RESNoNull;
+		_PlayerData.PS.LUCKNoNull = LUCKNoNull;
+		_PlayerData.Gold = GM.gold;
+
+		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
+		FileStream file = File.OpenWrite(Application.persistentDataPath + path);
+
+		try {
+			bf.Serialize (file,_PlayerData);
+		}
+		finally {
+			file.Close ();
+		}
 	}
 	public void loadStats()
 	{
-		if (File.Exists(Application.persistentDataPath + "/playerInfo.dat")) {
+		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
+
+		if (File.Exists(Application.persistentDataPath + path)) {
 			print(Application.persistentDataPath);
 		Debug.Log ("Se cargaron datos");
 		BinaryFormatter bf = new BinaryFormatter ();
-		FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
-			PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
+		FileStream file = File.OpenRead (Application.persistentDataPath + path);
+		PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
 		file.Close ();
-		HPLegit = _PlayerData.HPLegit;
-		ATQLegir = _PlayerData.ATQLegir;
-		STAMINALegit = _PlayerData.STAMINALegit;
-		RESLegit = _PlayerData.RESLegit;
-		LUCKLegit = _PlayerData.LUCKLegit;
-		falselevel= _PlayerData.falselevel;
-		currentExp= _PlayerData.currentExp;
-//		GM.gold = PlayerData.GM.gold;
-		Points= _PlayerData.Points;
+		HPLegit = _PlayerData.PS.HPLegit;
+		ATQLegir = _PlayerData.PS.ATQLegir;
+		STAMINALegit = _PlayerData.PS.STAMINALegit;
+		RESLegit = _PlayerData.PS.RESLegit;
+		LUCKLegit = _PlayerData.PS.LUCKLegit;
+		falselevel= _PlayerData.PS.falselevel;
+		currentExp= _PlayerData.PS.currentExp;
+		GM.gold = _PlayerData.Gold;
 
-			HPNoNull = HPLegit;
-			ATQNoNull = ATQLegir;
-			STAMINANoNull = STAMINALegit;
-			RESNoNull = RESLegit;
-			LUCKNoNull = LUCKLegit;
+		Points= _PlayerData.PS.Points;
 
-		HPNoNull = _PlayerData.HPNoNull;
-		ATQNoNull = _PlayerData.ATQNoNull;
-		STAMINANoNull = _PlayerData.STAMINANoNull;
-		RESNoNull = _PlayerData.RESNoNull;
-		LUCKNoNull = _PlayerData.LUCKNoNull;
+		HPNoNull = HPLegit;
+		ATQNoNull = ATQLegir;
+		STAMINANoNull = STAMINALegit;
+		RESNoNull = RESLegit;
+		LUCKNoNull = LUCKLegit;
+
+		HPNoNull = _PlayerData.PS.HPNoNull;
+		ATQNoNull = _PlayerData.PS.ATQNoNull;
+		STAMINANoNull = _PlayerData.PS.STAMINANoNull;
+		RESNoNull = _PlayerData.PS.RESNoNull;
+		LUCKNoNull = _PlayerData.PS.LUCKNoNull;
 
 
 		currentHP = HPLevels[HPLegit];
@@ -639,30 +651,5 @@ public class PlayerStats : MonoBehaviour {
 			theH.playerCurrentHealth = theH.playerMaxHealth;
 		}
 	}
-	}
-
-	[Serializable]
-	class PlayerData
-	{
-		public int HPLegit {get;set;}
-		public int ATQLegir{get;set;}
-		public int STAMINALegit{get;set;}
-		public int RESLegit{get;set;}
-		public int LUCKLegit{get;set;}
-		public int falselevel{get;set;}
-		public int currentExp{get;set;}
-		//	PS.GM.gold = PlayerData.GM.gold;
-		public int Points{get;set;}
-		public int HPNoNull{get;set;}
-		public int ATQNoNull{get;set;}
-		public int STAMINANoNull{get;set;}
-		public int RESNoNull{get;set;}
-		public int LUCKNoNull{get;set;}
-
-
-		public PlayerData()
-		{
-			
-		}
 	}
 }
