@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 [Serializable]
-public class PlayerStats  {
+public class PlayerStats : MonoBehaviour {
 	public int currentLevel;
 	public int currentLevelFalse;
 	public int currentExp;
@@ -75,13 +75,16 @@ public class PlayerStats  {
 	public string statsForSG;
 	public bool hastoexit = true;
 	private GameObject statsButton;
+	private string auxNombre;
+
+	private Text PlayerNameText;
 
 	private bool itis = false;
 	// Use this for initialization
 	void Start () {
 		
 		SConfirm = false;
-
+		PlayerNameText = GameObject.Find ("PlayerName").GetComponent<Text>();
 		limit = 8;
 		statsButton = GameObject.Find ("statsButton");
 		statsButton = GameObject.Find ("statsButton");
@@ -168,6 +171,7 @@ public class PlayerStats  {
 		if (Application.loadedLevelName != "escena2" && LV.activeSelf) {
 			
 			puntos.text = "Puntos restantes: " + Points;
+			PlayerNameText.text = auxNombre;
 		
 		}
 	
@@ -338,7 +342,6 @@ public class PlayerStats  {
 			isActive = true;
 
 			Points = FalsePoints;
-
 			currentHP = HPLevels[HPLegit];
 			currentAttack = attacksLevels[ATQLegir];
 			currentStamina = staminaLevels[STAMINALegit];
@@ -575,21 +578,21 @@ public class PlayerStats  {
 
 		PlayerData _PlayerData = new PlayerData();
 
-		_PlayerData.PS.HPLegit = HPLegit;
-		_PlayerData.PS.ATQLegir = ATQLegir;
-		_PlayerData.PS.STAMINALegit = STAMINALegit;
-		_PlayerData.PS.RESLegit = RESLegit;
-		_PlayerData.PS.LUCKLegit = LUCKLegit;
-		_PlayerData.PS.falselevel= falselevel;
-		_PlayerData.PS.currentExp= currentExp;
+		_PlayerData.HPLegit = HPLegit;
+		_PlayerData.ATQLegir = ATQLegir;
+		_PlayerData.STAMINALegit = STAMINALegit;
+		_PlayerData.RESLegit = RESLegit;
+		_PlayerData.LUCKLegit = LUCKLegit;
+		_PlayerData.falselevel= falselevel;
+		_PlayerData.currentExp= currentExp;
 
-		_PlayerData.PS.Points= Points;
+		_PlayerData.Points= Points;
 
-		_PlayerData.PS.HPNoNull = HPNoNull;
-		_PlayerData.PS.ATQNoNull = ATQNoNull;
-		_PlayerData.PS.STAMINANoNull = STAMINANoNull;
-		_PlayerData.PS.RESNoNull = RESNoNull;
-		_PlayerData.PS.LUCKNoNull = LUCKNoNull;
+		_PlayerData.HPNoNull = HPNoNull;
+		_PlayerData.ATQNoNull = ATQNoNull;
+		_PlayerData.STAMINANoNull = STAMINANoNull;
+		_PlayerData.RESNoNull = RESNoNull;
+		_PlayerData.LUCKNoNull = LUCKNoNull;
 		_PlayerData.Gold = GM.gold;
 
 		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
@@ -607,22 +610,22 @@ public class PlayerStats  {
 		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
 
 		if (File.Exists(Application.persistentDataPath + path)) {
-			print(Application.persistentDataPath);
-		Debug.Log ("Se cargaron datos");
+					Debug.Log ("Se cargaron datos");
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.OpenRead (Application.persistentDataPath + path);
 		PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
+			Debug.Log (_PlayerData.PlayerName);
 		file.Close ();
-		HPLegit = _PlayerData.PS.HPLegit;
-		ATQLegir = _PlayerData.PS.ATQLegir;
-		STAMINALegit = _PlayerData.PS.STAMINALegit;
-		RESLegit = _PlayerData.PS.RESLegit;
-		LUCKLegit = _PlayerData.PS.LUCKLegit;
-		falselevel= _PlayerData.PS.falselevel;
-		currentExp= _PlayerData.PS.currentExp;
+		HPLegit = _PlayerData.HPLegit;
+		ATQLegir = _PlayerData.ATQLegir;
+		STAMINALegit = _PlayerData.STAMINALegit;
+		RESLegit = _PlayerData.RESLegit;
+		LUCKLegit = _PlayerData.LUCKLegit;
+		falselevel= _PlayerData.falselevel;
+		currentExp= _PlayerData.currentExp;
 		GM.gold = _PlayerData.Gold;
-
-		Points= _PlayerData.PS.Points;
+			auxNombre = _PlayerData.PlayerName;
+		Points= _PlayerData.Points;
 
 		HPNoNull = HPLegit;
 		ATQNoNull = ATQLegir;
@@ -630,11 +633,11 @@ public class PlayerStats  {
 		RESNoNull = RESLegit;
 		LUCKNoNull = LUCKLegit;
 
-		HPNoNull = _PlayerData.PS.HPNoNull;
-		ATQNoNull = _PlayerData.PS.ATQNoNull;
-		STAMINANoNull = _PlayerData.PS.STAMINANoNull;
-		RESNoNull = _PlayerData.PS.RESNoNull;
-		LUCKNoNull = _PlayerData.PS.LUCKNoNull;
+		HPNoNull = _PlayerData.HPNoNull;
+		ATQNoNull = _PlayerData.ATQNoNull;
+		STAMINANoNull = _PlayerData.STAMINANoNull;
+		RESNoNull = _PlayerData.RESNoNull;
+		LUCKNoNull = _PlayerData.LUCKNoNull;
 
 
 		currentHP = HPLevels[HPLegit];

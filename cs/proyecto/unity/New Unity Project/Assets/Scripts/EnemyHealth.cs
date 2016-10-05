@@ -18,7 +18,8 @@ public class EnemyHealth : MonoBehaviour {
     {
 
         CurrentHealth = MaxHealth;
-		thePS = FindObjectOfType <PlayerStats>();
+		//thePS = FindObjectOfType <PlayerStats>();
+		thePS = GameObject.Find ("Player").GetComponent<PlayerStats> ();
 		theSG= FindObjectOfType <SaveGame>();
     }
 

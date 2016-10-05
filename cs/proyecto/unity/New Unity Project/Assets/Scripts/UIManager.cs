@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour {
 		ExpText = GameObject.Find ("Exp(UIManager) - Text").GetComponent<Text>();
 
 
-		DPopUP =Instantiate(Resources.Load("PopUp")) as GameObject;
+	DPopUP =Instantiate(Resources.Load("PopUp")) as GameObject; //ESTO ES PARA QUE CUANDO SE VAYA CERCA DEL MUNDO A DONDE QUERES IR, QUE TE APAREZCA UN POPUP
 
     }
 	

@@ -6,12 +6,10 @@ public class GoldManager : MonoBehaviour {
 	public int gold;
 	public Text goldTXT;
 	private SaveGame SG;
-	private PlayerStats PS;
 	// Use this for initialization
 	void Start () {
 		gold = 0;
 		SG = FindObjectOfType<SaveGame>();
-		PS = FindObjectOfType<PlayerStats>();
 		goldTXT = GameObject.Find ("Gold(GoldManager) - Text").GetComponent<Text> ();
 	}
 	
