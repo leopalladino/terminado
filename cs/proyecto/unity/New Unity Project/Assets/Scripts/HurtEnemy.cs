@@ -51,21 +51,61 @@ public class HurtEnemy : MonoBehaviour {
 			other.gameObject.GetComponent<EnemyHealth>().HurtEnemy(currentDamage);
             Instantiate(damageBurst, hitPoint.position, hitPoint.rotation);
             var clone = (GameObject )Instantiate(damageNumber, hitPoint.position, Quaternion.Euler(Vector3.zero));
-			clone.GetComponent<FloatingNumbers>().damageNumber = currentDamage;
+			clone.GetComponent<FloatingNumbers>().damageNumber = currentDamage + "!";
 
+				if (gameObject.name != "sword") {
+					if (GameObject.Find("Player").GetComponent<PlayerMovement>().up) {
+						rbody.velocity= Vector2.zero;
+						x=0f;
+						y = 8f;
+						other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
+						other.gameObject.GetComponent<SlimeController>().GettingAttacked(x,y,seconds);
+						isgettingattacked = true;
+						Destroy (this.gameObject);
+					
+					}
+					if (GameObject.Find("Player").GetComponent<PlayerMovement>().down) {
+						rbody.velocity= Vector2.zero;
+						x=0f;
+						y = -8f;
+						other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
+						other.gameObject.GetComponent<SlimeController>().GettingAttacked(x,y,seconds);
+						isgettingattacked = true;
+						Destroy (this.gameObject);
+
+					}
+					if (GameObject.Find("Player").GetComponent<PlayerMovement>().right) {
+						Debug.Log ("Muerte");
+						rbody.velocity= Vector2.zero;
+						x=8f;
+						y = 0f;
+						other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
+						other.gameObject.GetComponent<SlimeController>().GettingAttacked(x,y,seconds);
+						isgettingattacked = true;
+						Destroy (this.gameObject);
+					}
+					if (GameObject.Find("Player").GetComponent<PlayerMovement>().left) {
+						Debug.Log ("Muerte");
+						rbody.velocity= Vector2.zero;
+						x=-8f;
+						y = 0f;
+						other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
+						other.gameObject.GetComponent<SlimeController>().GettingAttacked(x,y,seconds);
+						isgettingattacked = true;
+						Destroy (this.gameObject);
+					}
+				} else {
             //ESTO DE ACÁ SON TRANFORMS QUE ORDENAN AL SLIME MOVERSE 1 TILE EN LA DIRECCION EN LA QUE GOLPEO EL PLAYER. HAY QUE HACER ALGO DIFERENTE, ALGO QUE EJECUTE UNA ANIMACIÓN DEL SLIME MOVIENDOSE A ESE LADO. UN SCRIPT.
            	//Acá debería ir un Switch
 			if (GameObject.Find("Player").GetComponent<PlayerMovement>().lastMove.x == 1) //Derecha
             {
-                //other.gameObject.transform.position = new Vector3((other.gameObject.transform.position.x + 1), other.gameObject.transform.position.y, Time.deltaTime);
 				rbody.velocity= Vector2.zero;
 				x=8f;
 				y = 0f;
 				other.gameObject.GetComponent<SlimeController>().GettingAttacked(x,y,seconds);
-                    other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
-					isgettingattacked = true;
-
-                }   
+				other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
+				isgettingattacked = true;
+            }   
             if (GameObject.Find("Player").GetComponent<PlayerMovement>().lastMove.x == -1) //Izquierda
             {
                 //other.gameObject.transform.position = new Vector3((other.gameObject.transform.position.x - 1), other.gameObject.transform.position.y, Time.deltaTime);
@@ -73,8 +113,8 @@ public class HurtEnemy : MonoBehaviour {
 				x=-8f;
 				y = 0f;
 				other.gameObject.GetComponent<SlimeController>().GettingAttacked(x,y,seconds);
-                    other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
-					isgettingattacked = true;
+                other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
+				isgettingattacked = true;
                 }
             if (GameObject.Find("Player").GetComponent<PlayerMovement>().lastMove.y == 1)//Arriba
             {
@@ -83,8 +123,8 @@ public class HurtEnemy : MonoBehaviour {
 				x=0f;
 				y = 8f;
 				other.gameObject.GetComponent<SlimeController>().GettingAttacked(x,y,seconds);
-                    other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
-					isgettingattacked = true;
+                other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
+				isgettingattacked = true;
                 }
             if (GameObject.Find("Player").GetComponent<PlayerMovement>().lastMove.y == -1)//Abajo
             {
@@ -94,8 +134,9 @@ public class HurtEnemy : MonoBehaviour {
 				y = -8f;
 				other.gameObject.GetComponent<SlimeController>().GettingAttacked(x,y,seconds);
                 other.gameObject.GetComponent<FollowPlayer>().canfollow = false;
-					isgettingattacked = true;
+				isgettingattacked = true;
                 }
+			}
 			hadAttacked = true;
 			}
 		}

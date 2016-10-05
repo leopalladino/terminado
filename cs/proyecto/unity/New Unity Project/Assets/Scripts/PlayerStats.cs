@@ -87,7 +87,6 @@ public class PlayerStats : MonoBehaviour {
 		PlayerNameText = GameObject.Find ("PlayerName").GetComponent<Text>();
 		limit = 8;
 		statsButton = GameObject.Find ("statsButton");
-		statsButton = GameObject.Find ("statsButton");
 		isReset = false;
 		falselevel = 1;
 		currentLevel = 1;

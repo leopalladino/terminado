@@ -34,15 +34,16 @@ public class ShopManager : MonoBehaviour {
 		//hover.SetActive(false);
 		waterIsOn = false;
 		thunderIsON = false;
-		weapon = GameObject.FindGameObjectWithTag ("Weapon");
+		weapon = GameObject.Find ("sword");
 		anim = weapon.GetComponent<Animator> ();
 	    //anim = weapon.GetComponent<Animator> (); DEBERÍA ARREGLARLO ALGÚN DÍA
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if (LevelOfSword == 1) {
-			anim.SetBool ("Standar", true);
+			anim.SetBool ("Standar", true); 
 			anim.SetBool ("Water", false);
 			anim.SetBool ("Thunder", false);
 			anim.SetBool ("FireSword", false);
@@ -87,6 +88,7 @@ public class ShopManager : MonoBehaviour {
 				anim.SetBool ("IsThunderON", false);
 			}
 		}
+
 		if (canChange) {
 			canChange = false;
 			anim.SetBool ("Standar", false);
@@ -100,6 +102,7 @@ public class ShopManager : MonoBehaviour {
 			anim.SetBool ("BloodAxe", false);
 			anim.SetBool (weaponInUsage, true);
 		}
+			
 	}
 
 	public void ChangeWeapon1()
@@ -137,7 +140,7 @@ public class ShopManager : MonoBehaviour {
 		canChange = true;
 		
 		LevelOfSword = 0;
-			gold.gold -= 100;
+			gold.gold -= 0;
 		}
 	}
 

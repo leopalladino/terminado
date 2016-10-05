@@ -82,11 +82,11 @@ public class HurtPlayer : MonoBehaviour {
 					
 					if (thePlayer.isdamaged == false) {
 						currentDamage = damageToGive - thePS.currentDefense;
-						Instantiate(damageBurst, transform.position, transform.rotation); //DEOS MEEI
+						Instantiate(damageBurst, transform.position, transform.rotation); 
 					
 			
 					var clone = (GameObject)Instantiate(damageNumber, other.transform.position, Quaternion.Euler(Vector3.zero));
-					clone.GetComponent<FloatingNumbers>().damageNumber = currentDamage;
+					clone.GetComponent<FloatingNumbers>().damageNumber = currentDamage+"!";
 					}
 
 

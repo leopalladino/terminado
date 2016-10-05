@@ -163,5 +163,6 @@ C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unit
 C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEditor.xml
 C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEngine.UI.xml
 C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\obj\Debug\Assembly-CSharp.dll
 C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\obj\Debug\Assembly-CSharp.pdb

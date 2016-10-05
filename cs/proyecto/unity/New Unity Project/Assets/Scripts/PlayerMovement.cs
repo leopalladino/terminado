@@ -36,6 +36,12 @@ public class PlayerMovement : MonoBehaviour {
 	private PotionManager PM;
 	private ShopManager Shop;
 	private ShopHolder Shopi;
+
+	public bool up = false;
+	public bool down = true;
+	public bool right = false;
+	public bool left = false;
+
     // Use this for initialization
     void Start() {
 		Shop = FindObjectOfType<ShopManager>();
@@ -66,11 +72,6 @@ public class PlayerMovement : MonoBehaviour {
 			OnRightClick ();
 		}
 			
-
-
-
-
-
         ismoving = false;
         isrunning = false;
 
@@ -113,15 +114,35 @@ public class PlayerMovement : MonoBehaviour {
                 ismoving = true;
                 lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
                 weapon.GetComponent<SpriteRenderer>().sortingOrder = 3;
-
-
+				if (lastMove.x == 1f) {
+					right = true;
+					up = false;
+					down = false;
+					left = false;
+				} if (lastMove.x == -1f)  {
+					right = false;
+					up = false;
+					down = false;
+					left = true;
+				}
             }
             if (Input.GetAxisRaw("Vertical") > 0.5f || Input.GetAxisRaw("Vertical") < -0.5f)
             {
                 rbody.velocity = new Vector2(rbody.velocity.x, Input.GetAxisRaw("Vertical") * currentMoveSpeed);
                 ismoving = true;
                 lastMove = new Vector2(0f, Input.GetAxisRaw("Vertical"));
-
+				if (lastMove.y == 1f) {
+					right = false;
+					up = true;
+					down = false;
+					left = false;
+				} 
+				if (lastMove.y == -1f) {
+					right = false;
+					up = false;
+					down = true;
+					left = false;
+				}
 				if (Input.GetAxisRaw("Vertical") == 1f && Input.GetAxisRaw("Horizontal") == -1f ||Input.GetAxisRaw("Vertical") == 1f && Input.GetAxisRaw("Horizontal") == 1f   )
                 {
                     weapon.GetComponent<SpriteRenderer>().sortingOrder = 4;
@@ -182,7 +203,20 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 
-	
+		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
+			if (left) {
+				this.transform.position = new Vector3 (transform.position.x - 5,transform.position.y,transform.position.z);
+			}
+			if (right) {
+				this.transform.position = new Vector3 (transform.position.x + 5,transform.position.y,transform.position.z);
+			}
+			if (up) {
+				this.transform.position = new Vector3 (transform.position.x,transform.position.y + 5,transform.position.z);
+			}
+			if (down) {
+				this.transform.position = new Vector3 (transform.position.x,transform.position.y - 5,transform.position.z);
+			}
+		}
         if (Input.GetMouseButtonDown(0))
         {
 			
@@ -192,34 +226,29 @@ public class PlayerMovement : MonoBehaviour {
 
             if (this.gameObject.GetComponent<Stamina>().playerCurrentStamina != 0)
             {
-                if (!hadAttacked)
-                {
+					if (!hadAttacked) {
 						if (canattack) {
 							
-						
-                    this.gameObject.GetComponent<Stamina>().must = false;
-                    hadAttacked = true;
-                    this.gameObject.GetComponent<Stamina>().WastingStamina(10);
-                    attackTimeCounter = attackTime;
-                    attacking = true;
-                    rbody.velocity = Vector2.zero;
-                    anim.SetBool("attack", true);
-                    weapon.GetComponent<PolygonCollider2D>().enabled = true;
-                    if (lastMove.y == -1f || Input.GetAxisRaw("Vertical") == 0f && Input.GetAxisRaw("Horizontal") == 0f)
-                    {
-                        weapon.GetComponent<SpriteRenderer>().sortingOrder = 4;
-                    }
-
-                    //
+							this.gameObject.GetComponent<Stamina> ().must = false;
+							hadAttacked = true;
+							this.gameObject.GetComponent<Stamina> ().WastingStamina (10);
+							attackTimeCounter = attackTime;
+							attacking = true;
+							rbody.velocity = Vector2.zero;
+							if (!weapon.GetComponent<Animator>().GetBool("StandardBow")) {
+							anim.SetBool ("attack", true);
+							weapon.GetComponent<PolygonCollider2D> ().enabled = true;
+							if (lastMove.y == -1f || Input.GetAxisRaw ("Vertical") == 0f && Input.GetAxisRaw ("Horizontal") == 0f) {
+								weapon.GetComponent<SpriteRenderer> ().sortingOrder = 4;
+							}
+						} else {
+								FireArrow ();
+							}
 						}
-                }
-            }
-			}
-
-        
-	
+					}
+           }
 		}
-
+		}
 
         if (this.gameObject.GetComponent<Stamina>().playerCurrentStamina != 0)
         {
@@ -305,7 +334,23 @@ public class PlayerMovement : MonoBehaviour {
 			canattack = false;
 		}
 	}
+	public void FireArrow(){
+		Debug.Log ("Lol");
+		GameObject obj = (GameObject)Instantiate(Resources.Load("Arrow"), transform.position, transform.rotation);
+		if (up) {
+			obj.GetComponent<Rigidbody2D>().velocity = new Vector2 (0f, 8f);
+		}
+		if (down) {
+			obj.GetComponent<Rigidbody2D>().velocity = new Vector2 (0f, -8f);
+		}
+		if (left) {
+			obj.GetComponent<Rigidbody2D>().velocity = new Vector2 (-8f, 0f);
+		}
+		if (right) {
+			obj.GetComponent<Rigidbody2D>().velocity = new Vector2 (8f, 0f);
+		}
 
+	}
 
     }
 

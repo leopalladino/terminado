@@ -4,7 +4,7 @@ using System.Collections;
 
 public class FloatingNumbers : MonoBehaviour {
     public float moveSpeed;
-    public int damageNumber;
+    public string damageNumber;
     public Text displayNumber;
 	// Use this for initialization
 	void Start () {

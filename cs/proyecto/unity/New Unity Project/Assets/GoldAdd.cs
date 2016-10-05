@@ -18,7 +18,9 @@ public class GoldAdd : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.name == "Player" && other is PolygonCollider2D) {
-			
+			Instantiate(damageBurst,transform.position, transform.rotation);
+			var clone = (GameObject )Instantiate(Resources.Load("DamageNumbers"), transform.position, Quaternion.Euler(Vector3.zero));
+			clone.GetComponent<FloatingNumbers>().damageNumber = "$" + quanty;
 			Instantiate(damageBurst, transform.position, transform.rotation);
 		goldie.gameObject.GetComponent<GoldManager> ().AddGold(quanty);
 		Destroy(this.gameObject);
