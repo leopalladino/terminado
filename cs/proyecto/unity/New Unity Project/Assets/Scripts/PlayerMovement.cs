@@ -206,6 +206,7 @@ public class PlayerMovement : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.LeftAlt)) {
 			if (left) {
 				this.transform.position = new Vector3 (transform.position.x - 5,transform.position.y,transform.position.z);
+
 			}
 			if (right) {
 				this.transform.position = new Vector3 (transform.position.x + 5,transform.position.y,transform.position.z);
