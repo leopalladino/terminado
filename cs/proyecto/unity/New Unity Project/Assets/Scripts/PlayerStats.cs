@@ -55,7 +55,7 @@ public class PlayerStats : MonoBehaviour {
 
 	public Input Field;
 	public bool HadConfirm;
-	private SpawnPositionManager SPM;
+	public SpawnPositionManager SPM;
 	public GoldManager GM;
 	private SaveGame SG;
 	private bool isActive;
@@ -82,20 +82,18 @@ public class PlayerStats : MonoBehaviour {
 	private bool itis = false;
 	// Use this for initialization
 	void Start () {
-		
-		SConfirm = false;
-		PlayerNameText = GameObject.Find ("PlayerName").GetComponent<Text>();
-		limit = 8;
 		statsButton = GameObject.Find ("statsButton");
+		SConfirm = false;
+	
+		limit = 8;
+
 		isReset = false;
 		falselevel = 1;
 		currentLevel = 1;
 		currentLevelFalse = 1;
 		isFirstTime = true;
-		LV.SetActive (false);
 		PV = FindObjectOfType<PlayerMovement>();
 		GM = FindObjectOfType<GoldManager>();
-		SPM = FindObjectOfType<SpawnPositionManager>();
 		HadConfirm = true;
 		isActive = false;
 
@@ -145,7 +143,8 @@ public class PlayerStats : MonoBehaviour {
 
 
 			loadStats ();
-
+		PlayerNameText = GameObject.Find ("PlayerName").GetComponent<Text>();
+		LV.SetActive (false);
 
 	}
 	
@@ -168,10 +167,8 @@ public class PlayerStats : MonoBehaviour {
 		*/
 
 		if (Application.loadedLevelName != "escena2" && LV.activeSelf) {
-			
 			puntos.text = "Puntos restantes: " + Points;
 			PlayerNameText.text = auxNombre;
-		
 		}
 	
 		if (Application.loadedLevelName != "escena2") {
@@ -187,17 +184,12 @@ public class PlayerStats : MonoBehaviour {
 				saveStats();
 
 			}
-
 			if (SPM.win && !isActive && HadConfirm && PSAuxliarBool && !SPM.wantcontinue && hastoexit) {
-				
 				LevelUp ();
 				currentLevel = falselevel;
 				PSAuxliarBool = false;
 				HadConfirm = false;
 				isActive = true;
-				if (isFirstTime) {
-					
-				}
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.P)) {
