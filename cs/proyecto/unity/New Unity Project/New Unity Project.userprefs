@@ -1,21 +1,21 @@
-﻿<Properties StartupItem="New Unity Project.CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
+﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerStats.cs">
     <Files>
+      <File FileName="Assets\Scripts\PlayerStats.cs" Line="103" Column="17" />
       <File FileName="Assets\Scripts\MainMenuManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerStats.cs" Line="147" Column="1" />
       <File FileName="Assets\Scripts\PlayerData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Health.cs" Line="1" Column="1" />
       <File FileName="Assets\GoldManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="213" Column="5" />
-      <File FileName="Assets\Scripts\EnemyHealth.cs" Line="35" Column="4" />
-      <File FileName="Assets\ShopManager.cs" Line="27" Column="30" />
-      <File FileName="Assets\Scripts\HurtEnemy.cs" Line="95" Column="31" />
-      <File FileName="Assets\Scripts\SlimeController.cs" Line="100" Column="14" />
-      <File FileName="Assets\Scripts\FollowPlayer.cs" Line="48" Column="82" />
-      <File FileName="Assets\ShopHolder.cs" Line="32" Column="1" />
-      <File FileName="Assets\Scripts\PauseManager.cs" Line="34" Column="1" />
-      <File FileName="Assets\Scripts\UIManager.cs" Line="57" Column="57" />
+      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EnemyHealth.cs" Line="1" Column="1" />
+      <File FileName="Assets\ShopManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HurtEnemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SlimeController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FollowPlayer.cs" Line="1" Column="1" />
+      <File FileName="Assets\ShopHolder.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PauseManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UIManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -31,6 +31,8 @@
       <Breakpoint file="C:\Users\41823413\Desktop\proyecto\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\Scripts\PlayerStats.cs" line="576" column="9" />
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\ShopManager.cs" line="103" column="31" />
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\ShopManager.cs" line="139" column="8" />
+      <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\Scripts\PlayerStats.cs" line="416" column="16" />
+      <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\Scripts\PlayerStats.cs" line="304" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

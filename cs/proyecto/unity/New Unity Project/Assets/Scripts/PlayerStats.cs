@@ -615,7 +615,7 @@ public class PlayerStats : MonoBehaviour {
 		falselevel= _PlayerData.falselevel;
 		currentExp= _PlayerData.currentExp;
 		GM.gold = _PlayerData.Gold;
-			auxNombre = _PlayerData.PlayerName;
+		auxNombre = _PlayerData.PlayerName;
 		Points= _PlayerData.Points;
 
 		HPNoNull = HPLegit;
