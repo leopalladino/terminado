@@ -16,6 +16,10 @@ public class PlayerData {
 
 	public int Clase {get;set;}
 
+	public string CurrentWeapon{get;set;}
+
+	public string CurrentArmor{get;set;}
+
 	public PlayerStats PS {get;set;}
 
 	public int HPLegit{get;set;}

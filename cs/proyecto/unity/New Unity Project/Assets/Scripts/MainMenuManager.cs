@@ -273,6 +273,21 @@ public class MainMenuManager : MonoBehaviour {
 		_PlayerData.RESNoNull = 1;
 		_PlayerData.LUCKNoNull = 1;
 
+				switch (_PlayerData.Clase) {
+				case 1:
+					_PlayerData.CurrentWeapon = "Standar";
+					_PlayerData.CurrentArmor = "isStandard";
+					break;
+				case 2:
+					_PlayerData.CurrentWeapon = "FireAxe";
+					_PlayerData.CurrentArmor = "isStandard";
+					break;
+				case 3:
+					_PlayerData.CurrentWeapon = "StandardBow";
+					_PlayerData.CurrentArmor = "isStandard";
+					break;
+				}
+				Debug.Log (_PlayerData.Clase);
 		bf.Serialize (file,_PlayerData);
 		file.Close ();
 
@@ -291,6 +306,7 @@ public class MainMenuManager : MonoBehaviour {
 	}
 	public void SuperCreateNewGame(int ButtonNumber)
 	{
+		
 		CreateMenu.SetActive (true);
 		Slots.SetActive (false);
 		PlayerPrefs.SetInt ("partida", ButtonNumber);	

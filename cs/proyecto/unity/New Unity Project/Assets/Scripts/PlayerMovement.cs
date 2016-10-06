@@ -255,29 +255,28 @@ public class PlayerMovement : MonoBehaviour {
         {
             if (Input.GetKey(KeyCode.LeftShift) && rbody.velocity != Vector2.zero )
         {
-                this.gameObject.GetComponent<Stamina>().must = false;
-                if (hadRun != 1)
-                {
+				if (!anim.GetBool("isArmorRed")) {
+					this.gameObject.GetComponent<Stamina> ().must = false;
+					if (hadRun != 1) {
                     
-                    isrunning = true;
-					anim.SetBool("isrunning", true);
-                    moveSpeed = moveSpeed + moveSpeed / 2;
-                    hadRun = 1;
-                    return;
-                }
+						isrunning = true;
+						anim.SetBool ("isrunning", true);
+						moveSpeed = moveSpeed + moveSpeed / 2;
+						hadRun = 1;
+						return;
+					}
 
-                if (hadRun == 1)
-                {
+					if (hadRun == 1) {
 					
-                    waitToWaste -= Time.deltaTime;
-                    if (waitToWaste < 0)
-					{	
+						waitToWaste -= Time.deltaTime;
+						if (waitToWaste < 0) {	
 							this.gameObject.GetComponent<Stamina> ().WastingStamina (5);
 							waitToWaste = 0.5f;
 
-                    }
+						}
 
-                }
+					}
+				}
             }
         }
         

@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: ddb150c084dbb66429404521026a855b
+timeCreated: 1475781200
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: caminar abajo armor roja  (1)_0
+    21300002: caminar abajo armor roja  (1)_1
+    21300004: caminar abajo armor roja  (1)_2
+    21300006: caminar abajo armor roja  (1)_3
+    21300008: caminar abajo armor roja  (1)_4
+    21300010: caminar abajo armor roja  (1)_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: caminar abajo armor roja  (1)_0
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 25
+        width: 42
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 42}
+        - {x: -17, y: 42}
+        - {x: -21, y: 41}
+        - {x: -21, y: -42}
+        - {x: 16, y: -42}
+        - {x: 21, y: -29}
+        - {x: 21, y: 29}
+    - name: caminar abajo armor roja  (1)_1
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 25
+        width: 42
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10, y: 42}
+        - {x: -21, y: 30}
+        - {x: -21, y: -38}
+        - {x: -19, y: -42}
+        - {x: 21, y: -42}
+        - {x: 21, y: 37}
+        - {x: 11, y: 42}
+    - name: caminar abajo armor roja  (1)_2
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 23
+        width: 38
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -15, y: 43}
+        - {x: -19, y: 33}
+        - {x: -19, y: -29}
+        - {x: -14, y: -43}
+        - {x: 19, y: -43}
+        - {x: 19, y: 43}
+    - name: caminar abajo armor roja  (1)_3
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 25
+        width: 42
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 13, y: 42}
+        - {x: -17, y: 42}
+        - {x: -21, y: 41}
+        - {x: -21, y: -42}
+        - {x: 16, y: -42}
+        - {x: 21, y: -29}
+        - {x: 21, y: 29}
+    - name: caminar abajo armor roja  (1)_4
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 25
+        width: 42
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 42}
+        - {x: -21, y: 32}
+        - {x: -21, y: -26}
+        - {x: -14, y: -42}
+        - {x: 15, y: -42}
+        - {x: 21, y: -26}
+        - {x: 21, y: 37}
+        - {x: 11, y: 42}
+    - name: caminar abajo armor roja  (1)_5
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 23
+        width: 38
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 12, y: 43}
+        - {x: -11, y: 43}
+        - {x: -19, y: 41}
+        - {x: -19, y: -43}
+        - {x: 8, y: -43}
+        - {x: 16, y: -37}
+        - {x: 19, y: -16}
+        - {x: 19, y: 33}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

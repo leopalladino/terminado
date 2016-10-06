@@ -56,6 +56,7 @@ public class PlayerStats : MonoBehaviour {
 	public Input Field;
 	public bool HadConfirm;
 	public SpawnPositionManager SPM;
+	public ShopManager SM;
 	public GoldManager GM;
 	private SaveGame SG;
 	private bool isActive;
@@ -92,6 +93,7 @@ public class PlayerStats : MonoBehaviour {
 		currentLevel = 1;
 		currentLevelFalse = 1;
 		isFirstTime = true;
+		SM = FindObjectOfType<ShopManager>();
 		PV = FindObjectOfType<PlayerMovement>();
 		GM = FindObjectOfType<GoldManager>();
 		HadConfirm = true;
@@ -150,23 +152,7 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/*
-		 if (hadwarp) {
-			statsButton = GameObject.Find ("statsButton");
-			LV = GameObject.FindGameObjectWithTag ("LevelUp");	
-			PV = FindObjectOfType<PlayerMovement>();
-			GM = FindObjectOfType<GoldManager>();
-			SPM = FindObjectOfType<SpawnPositionManager>();
-			theH = FindObjectOfType <Health>();
-			theS = FindObjectOfType <Stamina>();
-			SPM = FindObjectOfType <SpawnPositionManager>();
-			SG = FindObjectOfType <SaveGame>();
-			loadStats ();
-			hadwarp = false;
-		}
-		*/
-
-		if (Application.loadedLevelName != "escena2" && LV.activeSelf) {
+		if (LV.activeSelf) {
 			puntos.text = "Puntos restantes: " + Points;
 			PlayerNameText.text = auxNombre;
 		}
@@ -184,6 +170,7 @@ public class PlayerStats : MonoBehaviour {
 				saveStats();
 
 			}
+
 			if (SPM.win && !isActive && HadConfirm && PSAuxliarBool && !SPM.wantcontinue && hastoexit) {
 				LevelUp ();
 				currentLevel = falselevel;
@@ -361,17 +348,29 @@ public class PlayerStats : MonoBehaviour {
 			LUCK (LUCKLegit);
 			isFirstTime = false;
 		} else {
+			Time.timeScale = 1;
 			Exit ();
 		}
 	}
 	public void Exit()
 	{
 		if (!HadConfirm) {
-			//(SPM.win && !isActive && HadConfirm && PSAuxliarBool && !SPM.wantcontinue) 
+			if (Application.loadedLevelName == "escena2") {
 
-			PSAuxliarBool = true;
-			HadConfirm = true;
-			isActive = false;
+			}
+			else {
+				if (SPM.win) {
+					PSAuxliarBool = false;
+					HadConfirm = false;
+					isActive = true;
+					SPM.continuar.SetActive (true);
+				} else {
+					PSAuxliarBool = true;
+					HadConfirm = true;
+					isActive = false;
+					SPM.continuar.SetActive (false);
+				}
+			}
 			Points = FalsePoints;
 			HPNoNull = HPLegit;
 			ATQNoNull = ATQLegir;
@@ -379,24 +378,7 @@ public class PlayerStats : MonoBehaviour {
 			RESNoNull=RESLegit ;
 			LUCKNoNull=LUCKLegit;
 			SPEEDNoNull= SPEEDLegit;
-			/*
-			isFirstTime = true;
-			if (!hadwarp) {
-				hastoexit = false;
-			}
-			for (int i = 0; i < Count.Length; i++) {
-				Count[i] = FalseCount[i];
-			}
-			HP (HPLegit);
-			STAMINA (STAMINALegit);
-			RES (RESLegit);
-			ATQ (ATQLegir);
-			//			SPEED (SPEEDLegit, null);
-			LUCK (LUCKLegit);
-			*/
 			isFirstTime = false;
-			//SPEEDLegit = currentSpeed;
-			isActive = false;
 			FalsePoints = Points; //ESTO CAUSA PROBLEMAS SI O SI
 
 			for (int i = 0; i < FalseCount.Length; i++) {
@@ -576,7 +558,7 @@ public class PlayerStats : MonoBehaviour {
 		_PlayerData.LUCKLegit = LUCKLegit;
 		_PlayerData.falselevel= falselevel;
 		_PlayerData.currentExp= currentExp;
-
+		_PlayerData.PlayerName = auxNombre;
 		_PlayerData.Points= Points;
 
 		_PlayerData.HPNoNull = HPNoNull;
@@ -596,6 +578,39 @@ public class PlayerStats : MonoBehaviour {
 			file.Close ();
 		}
 	}
+	public void saveWeapon(string weapon)
+	{
+		Debug.Log ("Se guardaron datos de armor");
+		BinaryFormatter bf = new BinaryFormatter ();
+		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
+		FileStream file = File.OpenWrite(Application.persistentDataPath + path);
+
+		PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
+
+		_PlayerData.CurrentWeapon = weapon;
+		_PlayerData.Gold = GM.gold;
+
+			bf.Serialize (file,_PlayerData);
+
+			file.Close ();
+
+	}
+	public void saveArmor(string armor)
+	{
+		Debug.Log ("Se guardaron datos de armor");
+		BinaryFormatter bf = new BinaryFormatter ();
+		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
+		FileStream file = File.OpenWrite(Application.persistentDataPath + path);
+
+		PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
+
+		_PlayerData.CurrentArmor = armor;
+		_PlayerData.Gold = GM.gold;
+			
+		bf.Serialize (file,_PlayerData);
+		file.Close ();
+	
+	}
 	public void loadStats()
 	{
 		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
@@ -605,7 +620,7 @@ public class PlayerStats : MonoBehaviour {
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.OpenRead (Application.persistentDataPath + path);
 		PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
-			Debug.Log (_PlayerData.PlayerName);
+		Debug.Log (_PlayerData.PlayerName);
 		file.Close ();
 		HPLegit = _PlayerData.HPLegit;
 		ATQLegir = _PlayerData.ATQLegir;
@@ -616,6 +631,11 @@ public class PlayerStats : MonoBehaviour {
 		currentExp= _PlayerData.currentExp;
 		GM.gold = _PlayerData.Gold;
 		auxNombre = _PlayerData.PlayerName;
+
+		SM.catchNameOfWeaponFORSCENES (_PlayerData.CurrentWeapon);
+		
+		SM.catchNameOfArmorForScenes (_PlayerData.CurrentArmor);
+
 		Points= _PlayerData.Points;
 
 		HPNoNull = HPLegit;
