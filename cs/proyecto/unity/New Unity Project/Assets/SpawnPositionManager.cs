@@ -88,7 +88,7 @@ public class SpawnPositionManager : MonoBehaviour {
 						EH = GO.transform.FindChild ("Slime").GetComponent<EnemyHealth> ();
 					}
 				
-					if (Application.loadedLevelName == "escena - copia") {
+						if (Application.loadedLevelName == "escena - copia" || Application.loadedLevelName == "escena3" ) {
 						EH = GO.transform.FindChild ("Pig").GetComponent<EnemyHealth> ();
 					}
 					EH.MaxHealth += level * 2;

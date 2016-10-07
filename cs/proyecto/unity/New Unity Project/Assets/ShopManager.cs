@@ -77,20 +77,19 @@ public class ShopManager : MonoBehaviour {
 	}
 	public void catchNameOfWeapon(string nameofweapon)
 	{
-		if (gold.gold >= 100 ) {
+		if (gold.gold >= 0 ) {
 			
 		weaponInUsage = nameofweapon;
 		PS.saveWeapon (nameofweapon);
 		canChange = true;
 		
 		LevelOfSword = 0;
-			gold.gold -= 100;
+			gold.gold -= 0;
 		}
 
 	}
 	public void catchNameOfWeaponFORSCENES(string nameofweapon)
 	{
-		
 			weaponInUsage = nameofweapon;
 			canChange = true;
 	

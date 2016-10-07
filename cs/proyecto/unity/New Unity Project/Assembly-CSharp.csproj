@@ -115,6 +115,7 @@
      <None Include="Assets\Tiled2Unity\Materials\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Textures\_ReadMe.txt" />
      <None Include="Assets\Dialogues\Dialogue1.txt" />
+     <None Include="Assets\Tiled2Unity\Imported\mapa(viejo).tiled2unity.xml" />
      <None Include="Assets\Tiled2Unity\Shaders\shaColorKey.shader" />
      <None Include="Assets\Tiled2Unity\License.txt" />
      <None Include="Assets\Tiled2Unity\Imported\Primer Mundo.tiled2unity.xml" />

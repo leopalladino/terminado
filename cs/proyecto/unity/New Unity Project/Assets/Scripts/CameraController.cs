@@ -13,18 +13,6 @@ public class CameraController : MonoBehaviour {
 		target = GameObject.Find ("Player").GetComponent<Transform> ();
         mycam = GetComponent<Camera>();
 
-   
-        //if (!cameraExists)
-        //{
-          //  cameraExists = true;
-           // DontDestroyOnLoad(transform.gameObject);
-       // }
-        //else
-        //{
-          //  Destroy(gameObject);
-        //}
-  
-        //DontDestroyOnLoad(transform.gameObject); esto lo vi en https://youtu.be/tevpiu8CW6I?list=PLiyfvmtjWC_X6e0EYLPczO9tNCkm2dzkm&t=297 Lo borré porque me creaba 2 o 1 MainCamera más.
     }
 
     // Update is called once per frame

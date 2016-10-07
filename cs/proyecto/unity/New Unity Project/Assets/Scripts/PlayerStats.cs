@@ -547,9 +547,11 @@ public class PlayerStats : MonoBehaviour {
 	public void saveStats()
 	{
 		Debug.Log ("Se guardaron datos");
+		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
 		BinaryFormatter bf = new BinaryFormatter ();
-
-		PlayerData _PlayerData = new PlayerData();
+		FileStream file = File.OpenRead (Application.persistentDataPath + path);
+		PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
+		file.Close ();
 
 		_PlayerData.HPLegit = HPLegit;
 		_PlayerData.ATQLegir = ATQLegir;
@@ -567,49 +569,46 @@ public class PlayerStats : MonoBehaviour {
 		_PlayerData.RESNoNull = RESNoNull;
 		_PlayerData.LUCKNoNull = LUCKNoNull;
 		_PlayerData.Gold = GM.gold;
-
-		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
-		FileStream file = File.OpenWrite(Application.persistentDataPath + path);
-
-		try {
-			bf.Serialize (file,_PlayerData);
-		}
-		finally {
-			file.Close ();
-		}
+	
+		BinaryFormatter bf1 = new BinaryFormatter ();
+		FileStream file1 = File.OpenWrite(Application.persistentDataPath + path);
+		bf1.Serialize(file1, _PlayerData);
+		file1.Close ();
 	}
 	public void saveWeapon(string weapon)
 	{
-		Debug.Log ("Se guardaron datos de armor");
-		BinaryFormatter bf = new BinaryFormatter ();
+		Debug.Log ("Se guardaron datos");
 		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
-		FileStream file = File.OpenWrite(Application.persistentDataPath + path);
-
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.OpenRead (Application.persistentDataPath + path);
 		PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
+		file.Close ();
 
-		_PlayerData.CurrentWeapon = weapon;
+		_PlayerData.CurrentWeapon= weapon;
 		_PlayerData.Gold = GM.gold;
 
-			bf.Serialize (file,_PlayerData);
 
-			file.Close ();
-
+		BinaryFormatter bf1 = new BinaryFormatter ();
+		FileStream file1 = File.OpenWrite(Application.persistentDataPath + path);
+		bf1.Serialize(file1, _PlayerData);
+		file1.Close ();
 	}
 	public void saveArmor(string armor)
 	{
-		Debug.Log ("Se guardaron datos de armor");
-		BinaryFormatter bf = new BinaryFormatter ();
+		Debug.Log ("Se guardaron datos");
 		string path = "/player" + Convert.ToString (PlayerPrefs.GetInt ("partida")) + ".dat";
-		FileStream file = File.OpenWrite(Application.persistentDataPath + path);
-
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.OpenRead (Application.persistentDataPath + path);
 		PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
+		file.Close ();
 
 		_PlayerData.CurrentArmor = armor;
 		_PlayerData.Gold = GM.gold;
-			
-		bf.Serialize (file,_PlayerData);
-		file.Close ();
-	
+
+		BinaryFormatter bf1 = new BinaryFormatter ();
+		FileStream file1 = File.OpenWrite(Application.persistentDataPath + path);
+		bf1.Serialize(file1, _PlayerData);
+		file1.Close ();
 	}
 	public void loadStats()
 	{
@@ -620,7 +619,6 @@ public class PlayerStats : MonoBehaviour {
 		BinaryFormatter bf = new BinaryFormatter ();
 		FileStream file = File.OpenRead (Application.persistentDataPath + path);
 		PlayerData _PlayerData = (PlayerData)bf.Deserialize (file) ;
-		Debug.Log (_PlayerData.PlayerName);
 		file.Close ();
 		HPLegit = _PlayerData.HPLegit;
 		ATQLegir = _PlayerData.ATQLegir;
@@ -631,26 +629,17 @@ public class PlayerStats : MonoBehaviour {
 		currentExp= _PlayerData.currentExp;
 		GM.gold = _PlayerData.Gold;
 		auxNombre = _PlayerData.PlayerName;
-
-		SM.catchNameOfWeaponFORSCENES (_PlayerData.CurrentWeapon);
-		
-		SM.catchNameOfArmorForScenes (_PlayerData.CurrentArmor);
-
 		Points= _PlayerData.Points;
-
 		HPNoNull = HPLegit;
 		ATQNoNull = ATQLegir;
 		STAMINANoNull = STAMINALegit;
 		RESNoNull = RESLegit;
 		LUCKNoNull = LUCKLegit;
-
 		HPNoNull = _PlayerData.HPNoNull;
 		ATQNoNull = _PlayerData.ATQNoNull;
 		STAMINANoNull = _PlayerData.STAMINANoNull;
 		RESNoNull = _PlayerData.RESNoNull;
 		LUCKNoNull = _PlayerData.LUCKNoNull;
-
-
 		currentHP = HPLevels[HPLegit];
 		currentAttack = attacksLevels[ATQLegir];
 		theH.playerMaxHealth = currentHP;
@@ -664,6 +653,11 @@ public class PlayerStats : MonoBehaviour {
 			theS.playerCurrentStamina = theS.playerMaxStamina; 
 			theH.playerCurrentHealth = theH.playerMaxHealth;
 		}
+			Debug.Log (_PlayerData.CurrentWeapon); // Esto es para chekear algo
+			SM.catchNameOfWeaponFORSCENES (_PlayerData.CurrentWeapon);
+			saveWeapon (_PlayerData.CurrentWeapon);
+			SM.catchNameOfArmorForScenes (_PlayerData.CurrentArmor);
+			saveArmor (_PlayerData.CurrentArmor);
 	}
 	}
 }

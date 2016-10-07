@@ -287,7 +287,6 @@ public class MainMenuManager : MonoBehaviour {
 					_PlayerData.CurrentArmor = "isStandard";
 					break;
 				}
-				Debug.Log (_PlayerData.Clase);
 		bf.Serialize (file,_PlayerData);
 		file.Close ();
 
@@ -306,7 +305,6 @@ public class MainMenuManager : MonoBehaviour {
 	}
 	public void SuperCreateNewGame(int ButtonNumber)
 	{
-		
 		CreateMenu.SetActive (true);
 		Slots.SetActive (false);
 		PlayerPrefs.SetInt ("partida", ButtonNumber);	
