@@ -154,8 +154,25 @@ public class HurtEnemy : MonoBehaviour {
 				{
 					GameObject e = (GameObject)Instantiate(Resources.Load("Water"), other.transform.position, other.transform.rotation);
 				}
-
-			}
+                if (anim.GetBool("Thunder") == true)
+                {
+                    GameObject e = (GameObject)Instantiate(Resources.Load("Lightning Strike"), other.transform.position, other.transform.rotation);
+                }
+                if (anim.GetBool("FireSword") == true)
+                {
+                    GameObject e = (GameObject)Instantiate(Resources.Load("Fire Fog"), other.transform.position, other.transform.rotation);
+                    Debug.Log("funciona");
+                }
+                if (anim.GetBool("BloodAxe") == true)
+                {
+                    GameObject e = (GameObject)Instantiate(Resources.Load("Fire Fog"), other.transform.position, other.transform.rotation);
+                    Debug.Log("funciona");
+                }
+                if (anim.GetBool("Water") == true)
+                {
+                    GameObject e = (GameObject)Instantiate(Resources.Load("Water"), other.transform.position, other.transform.rotation);
+                }
+            }
 		}
 	}
 }
