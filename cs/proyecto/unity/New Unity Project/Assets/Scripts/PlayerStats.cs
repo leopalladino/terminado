@@ -291,6 +291,7 @@ public class PlayerStats : MonoBehaviour {
 	public void OnOffLevelUpGO(){
 
 		if (!LV.activeSelf) {
+			Time.timeScale = 0;
 			statsButton.GetComponent<Image> ().color = Color.white;
 			currentLevel = falselevel;
 			LV.SetActive (true);

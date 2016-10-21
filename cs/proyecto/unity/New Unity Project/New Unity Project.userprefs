@@ -1,21 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CameraController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DestroyElement.cs">
     <Files>
-      <File FileName="Assets\SpawnPositionManager.cs" Line="91" Column="101" />
-      <File FileName="Assets\Scripts\Health.cs" Line="1" Column="1" />
-      <File FileName="Assets\GoldManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\poll.cs" Line="1" Column="1" />
-      <File FileName="Assets\ShopHolder.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerData.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerStats.cs" Line="1" Column="1" />
-      <File FileName="Assets\ShopManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Warp.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HurtEnemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PauseManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UIManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\CameraController.cs" Line="15" Column="1" />
+      <File FileName="Assets\Scripts\LoadNewArea.cs" Line="59" Column="29" />
+      <File FileName="Assets\ShopHolder.cs" Line="9" Column="27" />
+      <File FileName="Assets\Scripts\PlayerStats.cs" Line="148" Column="1" />
+      <File FileName="Assets\Scripts\UIManager.cs" Line="57" Column="35" />
+      <File FileName="Assets\DestroyElement.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -28,7 +19,7 @@
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\cs\proyecto\unity\New Unity Project\Assets\ShopManager.cs" line="90" column="14" />
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\cs\proyecto\unity\New Unity Project\Assets\Scripts\PlayerStats.cs" line="216" column="1" />
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\Proyecto-Final-Choosing-Souls\cs\proyecto\unity\New Unity Project\Assets\Scripts\UIManager.cs" line="38" column="1" />
-      <Breakpoint file="C:\Users\41823413\Desktop\proyecto\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\Scripts\PlayerStats.cs" line="576" column="9" />
+      <Breakpoint file="C:\Users\41823413\Desktop\proyecto\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\Scripts\PlayerStats.cs" line="577" column="9" />
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\ShopManager.cs" line="68" column="31" />
       <Breakpoint file="C:\Users\Danilo\Desktop\proyectos\Choosing Souls\project-lolazo\cs\proyecto\unity\New Unity Project\Assets\ShopManager.cs" line="75" column="1" />
     </BreakpointStore>

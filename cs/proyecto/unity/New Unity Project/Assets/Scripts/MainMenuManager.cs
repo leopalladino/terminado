@@ -15,6 +15,7 @@ public class MainMenuManager : MonoBehaviour {
 	private GameObject OutFromLN;
 	private GameObject CreateMenu;
 	private GameObject Slots;
+	private GameObject BtnQuit;
 
 	public Text CreatePJName1;
 	public Text CreatePJName2;
@@ -41,6 +42,9 @@ public class MainMenuManager : MonoBehaviour {
 	public Toggle Toggle3;
 	// Use this for initialization
 	void Start () {
+		BtnQuit = GameObject.Find ("btnQuit");
+		BtnQuit.SetActive (false);
+
 		Toggle1 = GameObject.Find ("Toggle1").GetComponent<Toggle>();
 		Toggle2 = GameObject.Find ("Toggle2").GetComponent<Toggle>();
 		Toggle3 = GameObject.Find ("Toggle3").GetComponent<Toggle>();
@@ -173,6 +177,7 @@ public class MainMenuManager : MonoBehaviour {
 	}
 	public void SuperNewGame()
 	{
+		BtnQuit.SetActive (true);
 		boolCNPJ = !boolCNPJ;
 		Debug.Log (boolCNPJ);
 		if (boolCNPJ) {
@@ -188,6 +193,7 @@ public class MainMenuManager : MonoBehaviour {
 	}
 	public void SuperLoadGame()
 	{
+		BtnQuit.SetActive (true);
 		boolLPJ = !boolLPJ;
 		if (boolLPJ) {
 			LPJ.SetActive (true);

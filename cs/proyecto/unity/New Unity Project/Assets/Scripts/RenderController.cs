@@ -24,7 +24,7 @@ public class RenderController : MonoBehaviour {
             }
 			if (other is BoxCollider2D || other is CircleCollider2D)
 			{
-            GameObject.FindGameObjectWithTag("Casa").GetComponent<MeshRenderer>().sortingOrder = 1;
+//            GameObject.FindGameObjectWithTag("Casa").GetComponent<MeshRenderer>().sortingOrder = 1;
             GameObject.FindGameObjectWithTag("Farol").GetComponent<MeshRenderer>().sortingOrder = 1;
 			GameObject.FindGameObjectWithTag("Barrel").GetComponent<MeshRenderer>().sortingOrder = 1;
 			GameObject.FindGameObjectWithTag("Sign").GetComponent<MeshRenderer>().sortingOrder = 2;

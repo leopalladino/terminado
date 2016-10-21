@@ -42,6 +42,10 @@ public class PlayerMovement : MonoBehaviour {
 	public bool right = false;
 	public bool left = false;
 
+
+	void Awake() {
+		Application.targetFrameRate = 200;
+	}
     // Use this for initialization
     void Start() {
 		Shop = FindObjectOfType<ShopManager>();
