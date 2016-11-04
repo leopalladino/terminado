@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour {
 	{
 		Popi = ((GameObject)Instantiate (Resources.Load("PopUp"), new Vector3 (transform.localPosition.x, 400, 0), Quaternion.identity) as GameObject);
 		Popi.transform.SetParent(this.gameObject.transform);
+		Popi.SetActive (true);
 
 	}
 }

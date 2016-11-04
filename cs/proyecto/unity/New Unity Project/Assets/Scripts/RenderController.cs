@@ -29,8 +29,8 @@ public class RenderController : MonoBehaviour {
 			GameObject.FindGameObjectWithTag("Barrel").GetComponent<MeshRenderer>().sortingOrder = 1;
 			GameObject.FindGameObjectWithTag("Sign").GetComponent<MeshRenderer>().sortingOrder = 2;
 			GameObject.FindGameObjectWithTag("Bush").GetComponent<MeshRenderer>().sortingOrder = 2;
-				GameObject.FindGameObjectWithTag("Arbol").GetComponent<MeshRenderer>().sortingOrder = 1;
-				GameObject.FindGameObjectWithTag("Tronco").GetComponent<MeshRenderer>().sortingOrder = 1;
+			//	GameObject.FindGameObjectWithTag("Arbol").GetComponent<MeshRenderer>().sortingOrder = 1;
+				//GameObject.FindGameObjectWithTag("Tronco").GetComponent<MeshRenderer>().sortingOrder = 1;
 			}}
 
     }
@@ -44,6 +44,7 @@ public class RenderController : MonoBehaviour {
             } */
 			if (other is BoxCollider2D || other is CircleCollider2D)
 			{
+				/*
             GameObject.FindGameObjectWithTag("Casa").GetComponent<MeshRenderer>().sortingOrder = 5;
             GameObject.FindGameObjectWithTag("Farol").GetComponent<MeshRenderer>().sortingOrder = 5;
 			GameObject.FindGameObjectWithTag("Barrel").GetComponent<MeshRenderer>().sortingOrder = 5;
@@ -51,6 +52,7 @@ public class RenderController : MonoBehaviour {
 			GameObject.FindGameObjectWithTag("Bush").GetComponent<MeshRenderer>().sortingOrder = 5;
 				GameObject.FindGameObjectWithTag("Arbol").GetComponent<MeshRenderer>().sortingOrder = 5;
 				GameObject.FindGameObjectWithTag("Tronco").GetComponent<MeshRenderer>().sortingOrder = 5;
+				*/
 			}
         }
     }

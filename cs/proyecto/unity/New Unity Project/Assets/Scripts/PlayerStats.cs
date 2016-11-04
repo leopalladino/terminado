@@ -81,6 +81,7 @@ public class PlayerStats : MonoBehaviour {
 	private Text PlayerNameText;
 
 	private bool itis = false;
+	public bool gato = false;
 	// Use this for initialization
 	void Start () {
 		statsButton = GameObject.Find ("statsButton");
@@ -180,7 +181,9 @@ public class PlayerStats : MonoBehaviour {
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.P)) {
-			OnOffLevelUpGO ();
+			if (gato) {
+				OnOffLevelUpGO ();
+			}
 		}
 
 		if (Application.loadedLevelName != "escena2") {

@@ -21,6 +21,8 @@ public class HurtEnemy : MonoBehaviour {
 	private bool hadAttacked = false;
 	private Animator anim;
 
+	public AudioSource AS;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -47,6 +49,14 @@ public class HurtEnemy : MonoBehaviour {
 		if (other.gameObject.tag == "Enemie")
 		{
 			if (hadAttacked == false) {
+
+				if (other.gameObject.GetComponent<Animator>().GetBool ("ispig")) {
+					AS = GameObject.Find ("JabaliHurtSound").GetComponent<AudioSource>();
+				} else {
+					AS = GameObject.Find ("HurtSound").GetComponent<AudioSource>();
+				}
+				AS.Play ();
+
 				rbody = other.GetComponent<Rigidbody2D>();
 				currentDamage = damageToGive + thePS.currentAttack;
 
@@ -143,7 +153,7 @@ public class HurtEnemy : MonoBehaviour {
 
 				if (anim.GetBool("ThunderAxe") == true)
 				{
-					GameObject e = (GameObject)Instantiate(Resources.Load("Lightning Strike"), other.transform.position, other.transform.rotation);
+					GameObject e = (GameObject)Instantiate(Resources.Load("Lightning Spark"), other.transform.position, other.transform.rotation);
 				}
 				if (anim.GetBool("FireAxe") == true)
 				{

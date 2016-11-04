@@ -42,12 +42,22 @@ public class PlayerMovement : MonoBehaviour {
 	public bool right = false;
 	public bool left = false;
 
+	public AudioSource ASstep;
+	public AudioSource ASswing;
+	public AudioSource ASbackground;
 
+	public bool ayudamoises = false;
 	void Awake() {
 		Application.targetFrameRate = 200;
 	}
     // Use this for initialization
     void Start() {
+		ASstep = GameObject.Find ("StepSound").GetComponent<AudioSource>();
+		ASswing = GameObject.Find ("SwingSound").GetComponent<AudioSource>();
+		ASbackground = GameObject.Find ("BackgroundSound").GetComponent<AudioSource>();
+
+		ASbackground.Play ();
+
 		Shop = FindObjectOfType<ShopManager>();
 		Shopi = FindObjectOfType<ShopHolder>();
 		PM = FindObjectOfType<PotionManager>();
@@ -72,6 +82,17 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+		if (anim.GetBool("iswalking")) {
+			if (!ayudamoises) {
+				ASstep.Play ();
+			//AS.PlayOneShot (AC);
+				Debug.Log ("OST");
+				ayudamoises = true;
+			}
+		} else {
+			ASstep.Stop ();
+			ayudamoises = false;
+		}
 		if (Application.loadedLevelName != "escena2") {
 			OnRightClick ();
 		}
@@ -233,7 +254,7 @@ public class PlayerMovement : MonoBehaviour {
             {
 					if (!hadAttacked) {
 						if (canattack) {
-							
+							ASswing.Play ();
 							this.gameObject.GetComponent<Stamina> ().must = false;
 							hadAttacked = true;
 							this.gameObject.GetComponent<Stamina> ().WastingStamina (10);

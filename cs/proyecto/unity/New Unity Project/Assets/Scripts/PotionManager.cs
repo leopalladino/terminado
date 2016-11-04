@@ -10,8 +10,10 @@ public class PotionManager : MonoBehaviour {
 	public Health H;
 	public GoldManager GM;
 	public Text cant;
+	public AudioSource AS;
 	// Use this for initialization
 	void Start () {
+		AS = GameObject.Find ("PotSound").GetComponent<AudioSource>();
 		H = FindObjectOfType<Health> (); 
 		GM = FindObjectOfType<GoldManager> ();
 		cant = GameObject.Find ("Potions(PotionsManager) - Text").GetComponent<Text> ();
@@ -47,6 +49,7 @@ public class PotionManager : MonoBehaviour {
 	public void PotionEffect()
 	{
 		if (Potions > 0 && H.playerCurrentHealth != H.playerMaxHealth) {
+			AS.Play ();
 			isPotion = true;
 			Potions--;
 		}

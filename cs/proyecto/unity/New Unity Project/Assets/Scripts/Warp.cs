@@ -6,9 +6,12 @@ public class Warp : MonoBehaviour {
 	private PlayerStats PS;
     public Transform warpTarget;
 	public bool WARPEO;
+	public AudioSource AS;
+
 	void Start () {
 		SPW = FindObjectOfType <SpawnPositionManager>();
 		PS = FindObjectOfType <PlayerStats>();
+		AS = GameObject.Find ("DoorSound").GetComponent<AudioSource>();
 	}
 
     IEnumerator OnTriggerEnter2D (Collider2D other)
@@ -18,7 +21,7 @@ public class Warp : MonoBehaviour {
 			//SPW.win
 		if (other.name == "Player" && other is BoxCollider2D)
         {
-     
+				AS.Play ();
 				PS.hadwarp = !PS.hadwarp;
 		ScreenFader sf = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
 
