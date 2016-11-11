@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour {
 
     GameObject PauseMenu;
-    bool paused;
+    public bool paused;
 	private PlayerMovement thePlayer;
 	private bool waspaused = false;
 	private GameObject hover;
@@ -17,7 +17,6 @@ public class PauseManager : MonoBehaviour {
         PauseMenu = GameObject.Find("PauseMenu");
 		lv = GameObject.Find("Level Up");
 		thePlayer = FindObjectOfType<PlayerMovement>();
-		hover = GameObject.Find ("SHOPPING");
 
 	}
 	
@@ -26,15 +25,7 @@ public class PauseManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-			/*
-			if (hover.activeInHierarchy == false || lv.activeInHierarchy == false) {
-				paused = !paused;
-			}
-			*/
-			if (hover.activeInHierarchy == false) {
-				paused = !paused;
-			}
-         
+				paused = !paused; 
         }
         if (paused)
         {

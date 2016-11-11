@@ -18,7 +18,6 @@ public class ShopHolder : MonoBehaviour {
 		SPW = FindObjectOfType<SpawnPositionManager>();
 		//hover= GameObject.Find ("SHOPPING");
 		hover.SetActive(false);
-		//dPopUp = Resources.Load ("PopUp");
 	}
 	
 	// Update is called once per frame
@@ -27,7 +26,7 @@ public class ShopHolder : MonoBehaviour {
 			
 			if (HadPopUp == false) {
 				
-				UIMan.PopUp(dPopUp);
+				UIMan.PopUp(Resources.Load ("PopUp") as GameObject);
 				HadPopUp = true;
 			}
 
@@ -77,5 +76,10 @@ public class ShopHolder : MonoBehaviour {
 			isinzone = false;
 			HadPopUp = false;
 		}
+	}
+
+	public void Exit()
+	{
+		hover.SetActive (false);
 	}
 }

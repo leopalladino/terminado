@@ -77,14 +77,14 @@ public class ShopManager : MonoBehaviour {
 	}
 	public void catchNameOfWeapon(string nameofweapon)
 	{
-		if (gold.gold >= 0 ) {
+		if (gold.gold >= 100 ) {
 			
 		weaponInUsage = nameofweapon;
 		PS.saveWeapon (nameofweapon);
 		canChange = true;
 		
 		LevelOfSword = 0;
-			gold.gold -= 0;
+			gold.gold -= 100;
 		}
 
 	}
@@ -97,12 +97,12 @@ public class ShopManager : MonoBehaviour {
 
 	public void catchNameOfArmor(string nameofarmor)
 	{
-		if (gold.gold >= 0 ) {
+		if (gold.gold >= 100 ) {
 			armorInUsage = nameofarmor;
 			PS.saveArmor (nameofarmor);
 			canChangeArmor = true;
 
-			gold.gold -= 0;
+			gold.gold -= 100;
 		}
 	}
 	public void catchNameOfArmorForScenes(string nameofarmor)

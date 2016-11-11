@@ -80,10 +80,13 @@ public class PlayerStats : MonoBehaviour {
 
 	private Text PlayerNameText;
 
+	private PauseManager pause;
+
 	private bool itis = false;
 	public bool gato = false;
 	// Use this for initialization
 	void Start () {
+		pause = FindObjectOfType<PauseManager> ();
 		statsButton = GameObject.Find ("statsButton");
 		SConfirm = false;
 	
@@ -140,13 +143,7 @@ public class PlayerStats : MonoBehaviour {
 		for (int i = 0; i < FalseCount.Length; i++) {
 			FalseCount [i] = 0;
 		}
-			
-
-
-
-
-			loadStats ();
-		PlayerNameText = GameObject.Find ("PlayerName").GetComponent<Text>();
+		loadStats ();
 		LV.SetActive (false);
 
 	}
@@ -155,10 +152,15 @@ public class PlayerStats : MonoBehaviour {
 	void Update () {
 		if (LV.activeSelf) {
 			puntos.text = "Puntos restantes: " + Points;
-			PlayerNameText.text = auxNombre;
+			if (gato) {
+			PlayerNameText = GameObject.Find ("PlayerName").GetComponent<Text>();
+			PlayerNameText.text = auxNombre;	
+			}
+		} else {
+			gato = !gato;	
 		}
 	
-		if (Application.loadedLevelName != "escena2") {
+		if (Application.loadedLevelName != "escena") {
 			if (currentExp >= toLevelUp[falselevel]) 
 			{
 				if (statsButton.GetComponent<Image>().color == Color.white) {
@@ -181,12 +183,13 @@ public class PlayerStats : MonoBehaviour {
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.P)) {
-			if (gato) {
+			if (!pause.paused) {
 				OnOffLevelUpGO ();
-			}
+				gato = true;
+			}		
 		}
 
-		if (Application.loadedLevelName != "escena2") {
+		if (Application.loadedLevelName != "escena") {
 			if (LV.activeSelf) {
 				aux = true;
 
@@ -359,7 +362,7 @@ public class PlayerStats : MonoBehaviour {
 	public void Exit()
 	{
 		if (!HadConfirm) {
-			if (Application.loadedLevelName == "escena2") {
+			if (Application.loadedLevelName == "escena") {
 
 			}
 			else {
@@ -367,12 +370,10 @@ public class PlayerStats : MonoBehaviour {
 					PSAuxliarBool = false;
 					HadConfirm = false;
 					isActive = true;
-					SPM.continuar.SetActive (true);
 				} else {
 					PSAuxliarBool = true;
 					HadConfirm = true;
 					isActive = false;
-					SPM.continuar.SetActive (false);
 				}
 			}
 			Points = FalsePoints;

@@ -173,7 +173,7 @@ public class MainMenuManager : MonoBehaviour {
     }
 	public void Continue()
 	{
-		Application.LoadLevel("escena2");
+		Application.LoadLevel("escena");
 	}
 	public void SuperNewGame()
 	{

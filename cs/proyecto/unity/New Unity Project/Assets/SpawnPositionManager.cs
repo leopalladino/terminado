@@ -73,7 +73,7 @@ public class SpawnPositionManager : MonoBehaviour {
 			}
 		}
 
-		if (Application.loadedLevelName != "escena2") {
+		if (Application.loadedLevelName != "escena") {
 		if (!win) {
 			if (haveStarted == false) {
 				
@@ -84,14 +84,13 @@ public class SpawnPositionManager : MonoBehaviour {
 					GO = (GameObject)Instantiate (theMob, new Vector3 (spawnPosition.position.x, spawnPosition.position.y + up, spawnPosition.position.z), spawnPosition.rotation);
 					mobs [quantySecondary] = GO;
 					//mobs[quantySecondary].gameObject.GetComponent<EnemyHealth> ().MaxHealth += level * 2;
-					if (Application.loadedLevelName == "escena") {
+					if (Application.loadedLevelName == "escena1") {
 						EH = GO.transform.FindChild ("Slime").GetComponent<EnemyHealth> ();
 					}
-				
-						if (Application.loadedLevelName == "escena - copia" || Application.loadedLevelName == "escena3" ) {
+						if (Application.loadedLevelName == "escena2" || Application.loadedLevelName == "escena3" ) {
 						EH = GO.transform.FindChild ("Pig").GetComponent<EnemyHealth> ();
 					}
-					EH.MaxHealth += level * 2;
+					EH.MaxHealth += level * 5;
 					EH.CurrentHealth = EH.MaxHealth;
 					mobs [quantySecondary] = GO;
 					quantySecondary++;

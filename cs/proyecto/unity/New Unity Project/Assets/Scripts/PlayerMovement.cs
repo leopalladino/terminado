@@ -243,7 +243,7 @@ public class PlayerMovement : MonoBehaviour {
 				this.transform.position = new Vector3 (transform.position.x,transform.position.y - 5,transform.position.z);
 			}
 		}
-        if (Input.GetMouseButtonDown(0))
+		if (Input.GetKeyDown(KeyCode.K))
         {
 			
 			if (!isrunning) {

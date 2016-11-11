@@ -5,14 +5,10 @@ public class LoadNewArea : MonoBehaviour {
     public string LevelToLoad;
 	public PlayerStats PS;
 	private bool ButtonPressed;
-	private  GameObject dPopUp;
 	private GameObject Canvas;
 	// Use this for initialization
 	void Start () {
 		Canvas = GameObject.Find ("Canvas");
-		dPopUp = Resources.Load ("PopUp") as GameObject;
-		dPopUp.transform.parent = Canvas.transform;
-		dPopUp.SetActive (false);
 		ButtonPressed = false;
 		PS = FindObjectOfType<PlayerStats>();
 	}
@@ -27,8 +23,6 @@ public class LoadNewArea : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
 			if (ButtonPressed) {
-				dPopUp.SetActive (true);
-				dPopUp.transform.SetParent(Canvas.transform);
             ScreenFader sf = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
 
 			GameObject.Find("Player").GetComponent<Animator>().enabled = false;
@@ -48,7 +42,6 @@ public class LoadNewArea : MonoBehaviour {
 	{
 		if (other is BoxCollider2D && other.name == "Player") 
 		{
-			dPopUp.SetActive (true);
 			if (Input.GetKeyDown(KeyCode.E)) {
 				ButtonPressed = true;
 			}
@@ -60,7 +53,6 @@ public class LoadNewArea : MonoBehaviour {
 		
 		if (other is BoxCollider2D && other.name == "Player") 
 		{
-			dPopUp.SetActive (false);
 			if (Input.GetKeyDown(KeyCode.E)) {
 				ButtonPressed = true;
 			}
