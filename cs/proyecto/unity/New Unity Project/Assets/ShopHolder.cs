@@ -40,14 +40,6 @@ public class ShopHolder : MonoBehaviour {
 				HadPopUp = true;
 				Time.timeScale = 0;
 		}
-			if (Input.GetKeyUp(KeyCode.Escape))
-			{
-				hover.SetActive(false);
-				if (HadPopUp) {
-					HadPopUp = false;
-				}
-				Time.timeScale = 1;
-			}
 		}
 
 		if (hover.activeSelf) {
@@ -80,6 +72,10 @@ public class ShopHolder : MonoBehaviour {
 
 	public void Exit()
 	{
-		hover.SetActive (false);
-	}
+			hover.SetActive(false);
+			if (HadPopUp) {
+				HadPopUp = false;
+			}
+			Time.timeScale = 1;
+		}
 }

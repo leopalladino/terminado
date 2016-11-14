@@ -31,11 +31,12 @@ public class ShopManager : MonoBehaviour {
 	public string armorInUsage;
 
 	private PlayerStats PS;
-
+	private PotionManager PM;
 	//public GameObject SwordRayo;
 
 	// Use this for initialization
 	void Start () {
+		PM= FindObjectOfType<PotionManager> ();
 		PS = FindObjectOfType<PlayerStats> ();
 		gold = FindObjectOfType<GoldManager> ();
 		//hover.SetActive(false);
@@ -101,13 +102,38 @@ public class ShopManager : MonoBehaviour {
 			armorInUsage = nameofarmor;
 			PS.saveArmor (nameofarmor);
 			canChangeArmor = true;
-
+			PS.RESLegit = PS.RESLegit + 5;
 			gold.gold -= 100;
+			PS.saveStats ();
 		}
 	}
 	public void catchNameOfArmorForScenes(string nameofarmor)
 	{
 			armorInUsage = nameofarmor;
 			canChangeArmor = true;
+	}
+
+	public void stamina()
+	{
+		if (gold.gold > 50) {
+			gold.gold = gold.gold - 50;
+			PS.STAMINALegit = PS.STAMINALegit + 10;
+			PS.saveStats();
+		}
+	}
+	public void atq()
+	{
+		if (gold.gold > 50) {
+			gold.gold = gold.gold - 50;
+			PS.ATQLegir = PS.ATQLegir + 10;
+			PS.saveStats ();
+		}
+	}
+	public void pot()
+	{
+		if (gold.gold > 50) {
+			gold.gold = gold.gold - 50;
+			PM.AddPotion (1);
+		}
 	}
 }
