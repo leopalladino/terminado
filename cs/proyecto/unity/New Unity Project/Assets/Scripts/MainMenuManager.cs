@@ -296,14 +296,14 @@ public class MainMenuManager : MonoBehaviour {
 		bf.Serialize (file,_PlayerData);
 		file.Close ();
 
-		Application.LoadLevel("escena2");
+		Application.LoadLevel("escena");
 			}
 		}
 	}
 	public void LoadPJ(int ButtonNumber)
 	{
 		if (File.Exists(Application.persistentDataPath + "/player" + ButtonNumber + ".dat")) {
-			Application.LoadLevel("escena2");
+			Application.LoadLevel("escena");
 			PlayerPrefs.SetInt ("partida", ButtonNumber);
 		} else {
 			Debug.Log ("No hay partida");
